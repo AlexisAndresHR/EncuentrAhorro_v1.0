@@ -131,6 +131,7 @@
             android:layout_marginLeft="46dp"
             android:layout_marginRight="46dp"
             android:background="@color/colorAccent"
+            android:onClick="cambioInterfaz"
             android:text="Regístrate"
             android:textColor="@android:color/background_light" />
     </LinearLayout>

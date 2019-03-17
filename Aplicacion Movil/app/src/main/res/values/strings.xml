@@ -12,4 +12,19 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- Valores de la interfaz "Publicar Recomendacion" -->
+    <string name="tv_titulo_rec">Publicar Recomendación</string>
+    <string name="tv_categoria">Categoría:</string>
+    <string name="tv_tipoproducto">Tipo de Producto:</string>
+    <string name="tv_otro">Otro:</string>
+    <string name="et_otro">Otro</string>
+    <string name="tv_precio">Precio: $</string>
+    <string name="tv_descripcion">Descripción:</string>
+    <string name="et_descripcion">Descripción del producto/servicio</string>
+    <string name="tv_duracion">Duración:</string>
+    <string name="tv_ubicacion">Ubicación:</string>
+    <string name="bt_recomendar">RECOMENDAR</string>
+
+
 </resources>

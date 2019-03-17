@@ -33,6 +33,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent; // Import de prueba para cambio de interfaz (temporal)...
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -347,5 +349,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+
+
+    // Código para prueba de cambio de interfaz (temporal)...
+    public void cambioInterfaz(View view) {
+        Intent cambio = new Intent(this, Activity_PublicarRecomendacion.class);
+        startActivity(cambio);
+    }
+
 }
 
