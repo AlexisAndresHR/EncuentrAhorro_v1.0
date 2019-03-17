@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EncuentrAhorro_v1.0</string>
+    <string name="app_name">EncuentrAhorro</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Nombre de Usuario</string>
     <string name="prompt_password">Contraseña</string>
