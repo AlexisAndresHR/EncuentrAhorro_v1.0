@@ -5,17 +5,17 @@ import android.os.Bundle;
 import android.content.Intent; // Import de prueba para cambio de interfaz (temporal)...
 import android.view.View; // Import de prueba para cambio de interfaz (temporal)...
 
-public class Activity_PublicarRecomendacion extends AppCompatActivity {
+public class Activity_Buscar extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__publicar_recomendacion);
+        setContentView(R.layout.activity__buscar);
     }
 
     // Código para prueba de cambio de interfaz (temporal)...
     public void cambioInterfaz2(View view) {
-        Intent cambio2 = new Intent(this, Activity_Buscar.class);
+        Intent cambio2 = new Intent(this, LoginActivity.class);
         startActivity(cambio2);
     }
 

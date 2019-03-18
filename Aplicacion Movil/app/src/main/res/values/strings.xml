@@ -26,5 +26,16 @@
     <string name="tv_ubicacion">Ubicación:</string>
     <string name="bt_recomendar">RECOMENDAR</string>
 
+    <!-- Valores de la interfaz "Buscar" -->
+    <string name="tv_titulo_bucar1">Búsqueda por producto</string>
+    <string name="et_palabra_clave">Producto</string>
+    <string name="btns_buscar">BUSCAR</string>
+    <string name="tv_titulo_bucar2">Agrega filtros a tu búsqueda</string>
+    <string name="tv_estado">Estado: </string>
+    <string name="tv_ciudad">Ciudad: </string>
+    <string name="tv_ordenarpor">Ordenar por: </string>
+    <string name="rb_recientes">Más recientes</string>
+    <string name="rb_populares">De mayor popularidad</string>
+
 
 </resources>
