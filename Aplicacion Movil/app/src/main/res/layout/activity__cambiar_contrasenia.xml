@@ -10,54 +10,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@drawable/degradado_color"
     tools:context=".LoginActivity">
 
 
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="277dp"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageView_logo"
-            android:layout_width="match_parent"
-            android:layout_height="232dp"
-            android:paddingTop="50dp"
-            app:srcCompat="@drawable/perfil" />
-
-        <TextView
-            android:id="@+id/tv_nombre_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="30dp"
-            android:text="Nombre de Usuario"
-            android:textAllCaps="false"
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
     <ScrollView
-        android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp">
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_logo"
+                android:layout_width="match_parent"
+                android:layout_height="232dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="30dp"
+                app:srcCompat="@drawable/perfil" />
+
+            <TextView
+                android:id="@+id/tv_nombre_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="30dp"
+                android:text="Nombre de Usuario"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -121,24 +103,17 @@
                     android:textColor="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
+            <Button
+                android:id="@+id/button_cambiar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="46dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="46dp"
+                android:background="@color/cajasColo"
+                android:text="@string/cambiar"
+                android:textColor="@android:color/background_light" />
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/button_cambiar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="46dp"
-            android:layout_marginRight="46dp"
-            android:background="@color/cajasColo"
-            android:text="@string/cambiar"
-            android:textColor="@android:color/background_light" />
-    </LinearLayout>
 
 </LinearLayout>
