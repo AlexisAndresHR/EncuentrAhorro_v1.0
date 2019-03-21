@@ -356,6 +356,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         Intent cambio = new Intent(this, Activity_PublicarRecomendacion.class);
         startActivity(cambio);
     }
+    // Código para prueba de cambio de interfaz (temporal)...
+    public void inicio(View view) {
+        Intent vista = new Intent(this, Activity_Inicio.class);
+        startActivity(vista);
+    }
 
 }
 

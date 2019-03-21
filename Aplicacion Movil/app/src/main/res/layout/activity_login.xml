@@ -91,6 +91,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="26dp"
                 android:background="@color/colorAccent"
+                android:onClick="inicio"
                 android:text="@string/action_sign_in"
                 android:textColor="@android:color/background_light"
                 android:textStyle="bold"
@@ -131,7 +132,7 @@
             android:layout_marginLeft="46dp"
             android:layout_marginRight="46dp"
             android:background="@color/colorAccent"
-            android:onClick="cambioInterfaz"
+            android:onClick="inicio"
             android:text="Regístrate"
             android:textColor="@android:color/background_light" />
     </LinearLayout>

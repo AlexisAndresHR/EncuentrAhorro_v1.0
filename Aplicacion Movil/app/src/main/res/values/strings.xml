@@ -36,6 +36,13 @@
     <string name="tv_ordenarpor">Ordenar por: </string>
     <string name="rb_recientes">Más recientes</string>
     <string name="rb_populares">De mayor popularidad</string>
+    <string name="title_activity__inicio">Inicio</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Conocer más</string>
 
 
 </resources>

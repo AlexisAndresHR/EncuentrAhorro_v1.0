@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Activity_Inicio"
+    tools:showIn="@layout/app_bar_activity__inicio">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageButton
+                android:id="@+id/ib_mis_recomendaciones"
+                android:layout_width="match_parent"
+                android:layout_height="202dp"
+                android:background="@color/backgroundColor"
+                app:srcCompat="@drawable/recomendacion" />
+
+            <ImageButton
+                android:id="@+id/ib_recomendaciones_favoritas"
+                android:layout_width="match_parent"
+                android:layout_height="206dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/backgroundColor"
+                app:srcCompat="@drawable/recomendaciones_favoritas" />
+
+            <ImageButton
+                android:id="@+id/ib_mi_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/backgroundColor"
+                app:srcCompat="@drawable/mi_perfil" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
