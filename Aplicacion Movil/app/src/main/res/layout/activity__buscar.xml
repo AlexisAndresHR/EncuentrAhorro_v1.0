@@ -44,6 +44,9 @@
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
                         android:hint="@string/et_palabra_clave"
+                        android:textColorHighlight="@color/colorPrimary"
+                        android:textColorLink="@color/colorPrimary"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="14sp" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
@@ -56,7 +59,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="20dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimary"
                 android:text="@string/btns_buscar"
                 android:textColor="@android:color/white" />
 
@@ -129,7 +132,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:text="@string/rb_recientes"
-                android:textColor="@android:color/tertiary_text_light" />
+                android:textColor="@android:color/tertiary_text_light"
+                android:textColorLink="@color/colorPrimary" />
 
             <RadioButton
                 android:id="@+id/rb_populares"
@@ -137,7 +141,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:text="@string/rb_populares"
-                android:textColor="@android:color/tertiary_text_light" />
+                android:textColor="@android:color/tertiary_text_light"
+                android:textColorLink="@color/colorPrimary" />
 
             <Button
                 android:id="@+id/bt_buscar2"
@@ -147,7 +152,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimary"
                 android:onClick="cambioInterfaz2"
                 android:text="@string/btns_buscar"
                 android:textColor="@android:color/white" />
