@@ -13,10 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activity_CambiarContrasenia"></activity>
         <activity
             android:name=".Activity_Inicio"
             android:label="@string/title_activity__inicio"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activity_Buscar" />
         <activity android:name=".Activity_PublicarRecomendacion" />
         <activity

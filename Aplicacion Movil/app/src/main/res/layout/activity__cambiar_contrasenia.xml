@@ -13,7 +13,7 @@
     android:background="@drawable/degradado_color"
     tools:context=".LoginActivity">
 
-    <!-- Login progress -->
+
     <ProgressBar
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"
@@ -24,14 +24,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="277dp"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView_logo"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            app:srcCompat="@drawable/perfil"/>
+            android:layout_height="232dp"
+            android:paddingTop="50dp"
+            app:srcCompat="@drawable/perfil" />
+
+        <TextView
+            android:id="@+id/tv_nombre_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:text="Nombre de Usuario"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -44,7 +56,8 @@
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -52,12 +65,15 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp">
 
-                <AutoCompleteTextView
-                    android:id="@+id/username"
+                <EditText
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress"
+                    android:hint="@string/contrasenia"
+                    android:imeActionId="6"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@color/colorAccent" />
@@ -71,10 +87,10 @@
                 android:layout_marginRight="30dp">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/newPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
+                    android:hint="@string/nueva_contrasenia"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
@@ -85,30 +101,25 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/button_sign_in"
-                style="?android:textAppearanceSmall"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="26dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="26dp"
-                android:background="@color/cajasColo"
-                android:onClick="inicio"
-                android:text="@string/action_sign_in"
-                android:textColor="@android:color/background_light"
-                android:textStyle="bold"
-                tools:text="Ingresar" />
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp">
 
-            <TextView
-                android:id="@+id/link_forgot_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Olvidé mi contraseña"
-                android:textAlignment="center"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/repeatPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/repetir_contrasenia"
+                    android:imeActionId="6"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/colorAccent" />
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
     </ScrollView>
@@ -119,24 +130,14 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/label_registrarse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="¿No tienes una cuenta?"
-            android:textAlignment="center"
-            android:textColor="@color/colorAccent" />
-
         <Button
-            android:id="@+id/button_registrarse"
+            android:id="@+id/button_cambiar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="46dp"
             android:layout_marginRight="46dp"
             android:background="@color/cajasColo"
-            android:onClick="inicio"
-            android:text="Regístrate"
+            android:text="@string/cambiar"
             android:textColor="@android:color/background_light" />
     </LinearLayout>
 

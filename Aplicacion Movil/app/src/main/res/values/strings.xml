@@ -44,5 +44,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Conocer más</string>
 
+    <!-- Valores de la interfaz cambio de contraseña-->
+    <string name="contrasenia">Contraseña</string>
+    <string name="nueva_contrasenia">Nueva contraseña</string>
+    <string name="repetir_contrasenia">Repetir Contraseña</string>
+    <string name="cambiar">Cambiar</string>
+
 
 </resources>
