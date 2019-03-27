@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
     apellido_mat varchar(30) not null,
     fotografia_usuario blob,
     promedio_evaluaciones float not null default 0,
-    nivel_usuario varchar(20) not null default "Promedio"
+    nivel_usuario varchar(20) not null default "Promedio",
+    codigo_recuperacion varchar(20) null
 );
 DESCRIBE usuarios;
 

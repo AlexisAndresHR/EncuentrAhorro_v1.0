@@ -31,7 +31,7 @@ def delete_usuarios(nombre_usuario):
         return None
 
 
-def insert_usuarios(email_usuario,contrasena_usuario,nombre,apellido_pat,apellido_mat,fotografia_usuario,promedio_evaluaciones,nivel_usuario):
+def insert_usuarios(email_usuario,contrasena_usuario,nombre,apellido_pat,apellido_mat,fotografia_usuario,promedio_evaluaciones,nivel_usuario,codigo_recuperacion):
     try:
         return db.insert('usuarios',email_usuario=email_usuario,
 contrasena_usuario=contrasena_usuario,
@@ -40,14 +40,15 @@ apellido_pat=apellido_pat,
 apellido_mat=apellido_mat,
 fotografia_usuario=fotografia_usuario,
 promedio_evaluaciones=promedio_evaluaciones,
-nivel_usuario=nivel_usuario)
+nivel_usuario=nivel_usuario,
+codigo_recuperacion=codigo_recuperacion)
     except Exception as e:
         print "Model insert Error {}".format(e.args)
         print "Model insert Message {}".format(e.message)
         return None
 
 
-def edit_usuarios(nombre_usuario,email_usuario,contrasena_usuario,nombre,apellido_pat,apellido_mat,fotografia_usuario,promedio_evaluaciones,nivel_usuario):
+def edit_usuarios(nombre_usuario,email_usuario,contrasena_usuario,nombre,apellido_pat,apellido_mat,fotografia_usuario,promedio_evaluaciones,nivel_usuario,codigo_recuperacion):
     try:
         return db.update('usuarios',nombre_usuario=nombre_usuario,
 email_usuario=email_usuario,
@@ -58,6 +59,7 @@ apellido_mat=apellido_mat,
 fotografia_usuario=fotografia_usuario,
 promedio_evaluaciones=promedio_evaluaciones,
 nivel_usuario=nivel_usuario,
+codigo_recuperacion=codigo_recuperacion,
                   where='nombre_usuario=$nombre_usuario',
                   vars=locals())
     except Exception as e:

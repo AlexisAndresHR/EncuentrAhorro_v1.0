@@ -45,6 +45,6 @@ class Insert:
 
         # call model insert_usuarios and try to insert new data
         config.model.insert_usuarios(
-            form['email_usuario'],form['contrasena_usuario'],form['nombre'],form['apellido_pat'],form['apellido_mat'],form['fotografia_usuario'],form['promedio_evaluaciones'],form['nivel_usuario'],
+            form['email_usuario'],form['contrasena_usuario'],form['nombre'],form['apellido_pat'],form['apellido_mat'],form['fotografia_usuario'],form['promedio_evaluaciones'],form['nivel_usuario'],form['codigo_recuperacion'],
         )
         raise config.web.seeother('/usuarios') # render usuarios index.html
