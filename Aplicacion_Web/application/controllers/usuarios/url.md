@@ -1,0 +1,5 @@
+'/usuarios', 'application.controllers.usuarios.index.Index',
+'/usuarios/view/(.+)', 'application.controllers.usuarios.view.View',
+'/usuarios/edit/(.+)', 'application.controllers.usuarios.edit.Edit',
+'/usuarios/delete/(.+)', 'application.controllers.usuarios.delete.Delete',
+'/usuarios/insert', 'application.controllers.usuarios.insert.Insert',

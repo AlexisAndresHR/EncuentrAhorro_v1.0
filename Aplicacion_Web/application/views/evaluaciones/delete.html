@@ -1,0 +1,32 @@
+$def with(evaluaciones, message)
+<h3>
+    <a href="/evaluaciones">evaluaciones</a>
+</h3>
+$if message != None:
+    <div class="alert alert-warning">
+        <strong>Advertencia </strong> $message
+    </div>
+<br>
+
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id_evaluacion" id="id_evaluacion" value="$evaluaciones.id_evaluacion" />
+
+    <div class="form-group">
+    <label for="calificacion">calificacion</label>
+    <input readonly id="calificacion" type="text" class="form-control" name="calificacion" size="30" value="$evaluaciones.calificacion"/>
+</div><div class="form-group">
+    <label for="id_recomendacion">id_recomendacion</label>
+    <input readonly id="id_recomendacion" type="text" class="form-control" name="id_recomendacion" size="30" value="$evaluaciones.id_recomendacion"/>
+</div><div class="form-group">
+    <label for="nombre_usuario">nombre_usuario</label>
+    <input readonly id="nombre_usuario" type="text" class="form-control" name="nombre_usuario" size="30" value="$evaluaciones.nombre_usuario"/>
+</div>
+
+    <div class="form-group">
+        <label></label>
+        <button id="send" name="send" class="form-control"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+    </div>
+</form>
+<br>
+<br>
+<br>

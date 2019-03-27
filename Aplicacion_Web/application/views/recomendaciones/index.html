@@ -1,0 +1,21 @@
+$def with(recomendaciones)
+<h3>
+    <a href="/recomendaciones">recomendaciones</a>
+</h3>
+<table id="datos_tabla" class="table table-hover" cellspacing="0" width="100%">
+    <thead>
+        <th>recomendaciones</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    <tbody>
+        $for item in recomendaciones:
+        <tr>
+            <td><a href='/recomendaciones/view/$item.id_recomendacion'>$item.id_recomendacion</a></td>
+            <td><a href='/recomendaciones/edit/$item.id_recomendacion'><span class="glyphicon glyphicon-pencil"></span></a></td>
+            <td><a href='/recomendaciones/delete/$item.id_recomendacion'><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>

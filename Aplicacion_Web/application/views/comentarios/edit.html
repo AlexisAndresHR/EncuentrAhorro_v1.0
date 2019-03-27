@@ -1,0 +1,31 @@
+$def with(comentarios, message)
+<h3>
+    <a href="/comentarios">comentarios</a>
+</h3>
+$if message != None:
+    <div class="alert alert-warning">
+        <strong>Advertencia </strong> $message
+    </div>
+    <br>
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id_comentario" id="id_comentario" value="$comentarios.id_comentario" />
+
+    <div class="form-group">
+    <label for="id_recomendacion">id_recomendacion</label>
+    <input required id="id_recomendacion" type="text" class="form-control" name="id_recomendacion" size="30" value="$comentarios.id_recomendacion"/>
+</div><div class="form-group">
+    <label for="nombre_usuario">nombre_usuario</label>
+    <input required id="nombre_usuario" type="text" class="form-control" name="nombre_usuario" size="30" value="$comentarios.nombre_usuario"/>
+</div><div class="form-group">
+    <label for="contenido">contenido</label>
+    <input required id="contenido" type="text" class="form-control" name="contenido" size="30" value="$comentarios.contenido"/>
+</div>
+
+    <div class="form-group">
+        <label></label>
+        <button id="send" name="send" class="form-control"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+    </div>
+</form>
+<br>
+<br>
+<br>

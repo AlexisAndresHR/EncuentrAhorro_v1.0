@@ -1,0 +1,46 @@
+$def with(usuarios, message)
+<h3>
+    <a href="/usuarios">usuarios</a>
+</h3>
+$if message != None:
+    <div class="alert alert-warning">
+        <strong>Advertencia </strong> $message
+    </div>
+    <br>
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="nombre_usuario" id="nombre_usuario" value="$usuarios.nombre_usuario" />
+
+    <div class="form-group">
+    <label for="email_usuario">email_usuario</label>
+    <input required id="email_usuario" type="text" class="form-control" name="email_usuario" size="30" value="$usuarios.email_usuario"/>
+</div><div class="form-group">
+    <label for="contrasena_usuario">contrasena_usuario</label>
+    <input required id="contrasena_usuario" type="text" class="form-control" name="contrasena_usuario" size="30" value="$usuarios.contrasena_usuario"/>
+</div><div class="form-group">
+    <label for="nombre">nombre</label>
+    <input required id="nombre" type="text" class="form-control" name="nombre" size="30" value="$usuarios.nombre"/>
+</div><div class="form-group">
+    <label for="apellido_pat">apellido_pat</label>
+    <input required id="apellido_pat" type="text" class="form-control" name="apellido_pat" size="30" value="$usuarios.apellido_pat"/>
+</div><div class="form-group">
+    <label for="apellido_mat">apellido_mat</label>
+    <input required id="apellido_mat" type="text" class="form-control" name="apellido_mat" size="30" value="$usuarios.apellido_mat"/>
+</div><div class="form-group">
+    <label for="fotografia_usuario">fotografia_usuario</label>
+    <input required id="fotografia_usuario" type="text" class="form-control" name="fotografia_usuario" size="30" value="$usuarios.fotografia_usuario"/>
+</div><div class="form-group">
+    <label for="promedio_evaluaciones">promedio_evaluaciones</label>
+    <input required id="promedio_evaluaciones" type="text" class="form-control" name="promedio_evaluaciones" size="30" value="$usuarios.promedio_evaluaciones"/>
+</div><div class="form-group">
+    <label for="nivel_usuario">nivel_usuario</label>
+    <input required id="nivel_usuario" type="text" class="form-control" name="nivel_usuario" size="30" value="$usuarios.nivel_usuario"/>
+</div>
+
+    <div class="form-group">
+        <label></label>
+        <button id="send" name="send" class="form-control"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+    </div>
+</form>
+<br>
+<br>
+<br>
