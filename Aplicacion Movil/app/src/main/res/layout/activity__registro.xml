@@ -32,17 +32,6 @@
                 app:srcCompat="@drawable/perfil"
                 android:contentDescription="TODO" />
 
-            <TextView
-                android:id="@+id/tv_nombre_user"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="30dp"
-                android:text="@string/a_adir_foto"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,32 +124,6 @@
 
 
             </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="30dp">
-
-                <TextView
-                    android:id="@+id/tv_codigo_verificacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ingresa_el_codigo_de_verificaci_n"
-                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
-
-                <EditText
-                    android:id="@+id/edt_codigo_verificacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:textColor="@color/colorAccent" />
-
-            </android.support.design.widget.TextInputLayout>
-
 
             <Button
                 android:id="@+id/button_aceptar"

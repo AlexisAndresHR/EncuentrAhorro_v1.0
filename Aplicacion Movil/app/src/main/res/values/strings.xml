@@ -50,13 +50,6 @@
     <string name="repetir_contrasenia">Repetir Contraseña</string>
     <string name="cambiar">Cambiar</string>
 
-    <!-- Valores de la interfaz de cambio de Email-->
-    <string name="nombre_de_usuario_email">Nombre de Usuario</string>
-    <string name="email">Email</string>
-    <string name="nuevo_email">Nuevo Email</string>
-    <string name="confirmar_email">Confirmar Email</string>
-    <string name="ingresa_el_codigo_de_verificaci_n">Ingresa el codigo de verificación</string>
-
     <!-- Valores de la interfaz de Perfil-->
     <string name="cambiar_contrase_a">Cambiar contraseña</string>
     <string name="cambiar_email">Cambiar email</string>
@@ -70,6 +63,10 @@
     <string name="reglas_y_pol_ticas_de_privacidad">reglas y políticas de privacidad</string>
     <string name="acepto_terminos_y_condiciones">Acepto Terminos y Condiciones</string>
     <string name="ingresa">Ingresa el codigo de verificación</string>
+
+    <!-- Valores de la interfaz de Validacion de codigo-->
+    <string name="ingresa_el_codigo">Ingresa el codigo enviado a tu correo.</string>
+    <string name="aceptar">Aceptar</string>
 
 
 </resources>

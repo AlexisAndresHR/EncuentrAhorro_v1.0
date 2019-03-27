@@ -3,6 +3,6 @@
     <color name="colorPrimary">#C62828</color>
     <color name="colorPrimaryDark">#8B0000</color>
     <color name="colorAccent">#8B0000</color>
-    <color name="backgroundColor">#FFFF</color>
+    <color name="backgroundColor">#FFFFFF</color>
     <color name="cajasColo">#8B0000</color>
 </resources>
