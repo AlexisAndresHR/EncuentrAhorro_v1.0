@@ -11,7 +11,7 @@ $def with(favoritos)
     <tbody>
         $for item in favoritos:
         <tr>
-            <td><a href='/favoritos/view/$item.id_favorito'>$item.id_favorito</a></td>
+            <td><a href='/favoritos/view/$item.id_favorito'>$item.id_favorito[:1] $item.nombre_usuario $item.id_recomendacion</a></td>
             <td><a href='/favoritos/edit/$item.id_favorito'><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href='/favoritos/delete/$item.id_favorito'><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>

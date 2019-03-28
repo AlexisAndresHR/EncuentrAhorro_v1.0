@@ -26,5 +26,5 @@ class Index:
     def GET(self):
         result = config.model.get_all_categorias_productos().list() # get categorias_productos table list
         for row in result:
-            row.id_categoria = config.make_secure_val(str(row.id_categoria)) # apply HMAC to id_categoria (primary key)
+            row.id_categoria = config.make_secure_val(str(row.id_categoria)) # "apply HMAC to id_categoria (primary key)"
         return config.render.index(result) # render categorias_productos index.html

@@ -11,7 +11,7 @@ $def with(categorias_productos)
     <tbody>
         $for item in categorias_productos:
         <tr>
-            <td><a href='/categorias_productos/view/$item.id_categoria'>$item.id_categoria</a></td>
+            <td><a href='/categorias_productos/view/$item.id_categoria'>$item.id_categoria[:1] $item.nombre_categoria</a></td>
             <td><a href='/categorias_productos/edit/$item.id_categoria'><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href='/categorias_productos/delete/$item.id_categoria'><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>

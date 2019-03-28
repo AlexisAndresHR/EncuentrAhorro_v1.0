@@ -11,7 +11,7 @@ $def with(tipos_productos)
     <tbody>
         $for item in tipos_productos:
         <tr>
-            <td><a href='/tipos_productos/view/$item.id_producto'>$item.id_producto</a></td>
+            <td><a href='/tipos_productos/view/$item.id_producto'>$item.id_producto[:1] $item.nombre_producto</a></td>
             <td><a href='/tipos_productos/edit/$item.id_producto'><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href='/tipos_productos/delete/$item.id_producto'><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>

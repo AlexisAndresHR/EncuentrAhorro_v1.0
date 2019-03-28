@@ -11,7 +11,7 @@ $def with(comentarios)
     <tbody>
         $for item in comentarios:
         <tr>
-            <td><a href='/comentarios/view/$item.id_comentario'>$item.id_comentario</a></td>
+            <td><a href='/comentarios/view/$item.id_comentario'>$item.id_comentario[:1] $item.id_recomendacion </a></td>
             <td><a href='/comentarios/edit/$item.id_comentario'><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href='/comentarios/delete/$item.id_comentario'><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>

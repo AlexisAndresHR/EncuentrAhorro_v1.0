@@ -11,7 +11,7 @@ $def with(usuarios)
     <tbody>
         $for item in usuarios:
         <tr>
-            <td><a href='/usuarios/view/$item.nombre_usuario'>$item.nombre_usuario</a></td>
+            <td><a href='/usuarios/view/$item.nombre_usuario'>$item.email_usuario - $item.nombre $item.apellido_pat $item.apellido_mat</a></td>
             <td><a href='/usuarios/edit/$item.nombre_usuario'><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href='/usuarios/delete/$item.nombre_usuario'><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>

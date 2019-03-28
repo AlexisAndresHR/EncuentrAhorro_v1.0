@@ -11,7 +11,7 @@ $def with(evaluaciones)
     <tbody>
         $for item in evaluaciones:
         <tr>
-            <td><a href='/evaluaciones/view/$item.id_evaluacion'>$item.id_evaluacion</a></td>
+            <td><a href='/evaluaciones/view/$item.id_evaluacion'>$item.id_evaluacion[:1] $item.id_recomendacion</a></td>
             <td><a href='/evaluaciones/edit/$item.id_evaluacion'><span class="glyphicon glyphicon-pencil"></span></a></td>
             <td><a href='/evaluaciones/delete/$item.id_evaluacion'><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
