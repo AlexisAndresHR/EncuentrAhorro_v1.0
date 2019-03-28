@@ -20,10 +20,6 @@
             android:id="@+id/nav_cambiocontrasena"
             android:icon="@android:drawable/ic_secure"
             android:title="Cambiar contraseña" />
-        <item
-            android:id="@+id/nav_perfil"
-            android:icon="@android:drawable/ic_menu_my_calendar"
-            android:title="Perfil" />
     </group>
 
     <item android:title="Communicate">

@@ -103,7 +103,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginRight="26dp"
                         android:background="@color/cajasColo"
-                        android:onClick="inicio"
+                        android:onClick="cambioInterfaz"
                         android:text="@string/action_sign_in"
                         android:textColor="@android:color/background_light"
                         android:textStyle="bold"
@@ -117,7 +117,8 @@
                         android:text="Olvidé mi contraseña"
                         android:textAlignment="center"
                         android:textColor="@color/colorAccent"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:linksClickable="true"/>
 
                 </LinearLayout>
             </ScrollView>

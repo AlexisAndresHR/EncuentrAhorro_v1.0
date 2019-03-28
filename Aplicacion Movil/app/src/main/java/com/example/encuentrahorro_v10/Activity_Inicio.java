@@ -110,4 +110,10 @@ public class Activity_Inicio extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    // Código para prueba de cambio de interfaz  a perfil de usuario...
+    public void interfazPerfil(View view) {
+        Intent cambio = new Intent(this, Activity_Perfil.class);
+        startActivity(cambio);
+    }
 }
