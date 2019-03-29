@@ -1,0 +1,1 @@
+'/api_categorias_productos/?', 'application.api.categorias_productos.api_categorias_productos.Api_categorias_productos',

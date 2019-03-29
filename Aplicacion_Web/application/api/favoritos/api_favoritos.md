@@ -1,0 +1,1 @@
+'/api_favoritos/?', 'application.api.favoritos.api_favoritos.Api_favoritos',

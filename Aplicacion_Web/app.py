@@ -57,6 +57,13 @@ urls = (
     '/usuarios/edit/(.+)', 'application.controllers.usuarios.edit.Edit',
     '/usuarios/delete/(.+)', 'application.controllers.usuarios.delete.Delete',
     '/usuarios/insert', 'application.controllers.usuarios.insert.Insert',
+    '/api_categorias_productos/?', 'application.api.categorias_productos.api_categorias_productos.Api_categorias_productos',
+    '/api_comentarios/?', 'application.api.comentarios.api_comentarios.Api_comentarios',
+    '/api_evaluaciones/?', 'application.api.evaluaciones.api_evaluaciones.Api_evaluaciones',
+    '/api_favoritos/?', 'application.api.favoritos.api_favoritos.Api_favoritos',
+    '/api_recomendaciones/?', 'application.api.recomendaciones.api_recomendaciones.Api_recomendaciones',
+    '/api_tipos_productos/?', 'application.api.tipos_productos.api_tipos_productos.Api_tipos_productos',
+    '/api_usuarios/?', 'application.api.usuarios.api_usuarios.Api_usuarios',
 )
 
 app = web.application(urls, globals())

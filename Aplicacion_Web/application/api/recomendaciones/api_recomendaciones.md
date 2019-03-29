@@ -1,0 +1,1 @@
+'/api_recomendaciones/?', 'application.api.recomendaciones.api_recomendaciones.Api_recomendaciones',
