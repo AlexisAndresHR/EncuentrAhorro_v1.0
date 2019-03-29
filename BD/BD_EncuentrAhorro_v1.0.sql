@@ -16,9 +16,9 @@ CREATE TABLE IF NOT EXISTS usuarios (
 );
 DESCRIBE usuarios;
 
-INSERT INTO usuarios (nombre_usuario, email_usuario, contrasena_usuario, nombre, apellido_pat, apellido_mat) VALUES 
-	('AlexisHR', 'alexisandres006@gmail.com', 'password1', 'Alexis Andrés', 'Hernández', 'Ramírez'),
-	('Angie11', '1717110255@utectulancingo.edu.mx', 'password2', 'Maria de los Angeles', 'Gayosso', 'Octaviano');
+INSERT INTO usuarios (nombre_usuario, email_usuario, contrasena_usuario, nombre, apellido_pat, apellido_mat, codigo_recuperacion) VALUES 
+    ('AlexisHR', 'alexisandres006@gmail.com', 'password1', 'Alexis Andrés', 'Hernández', 'Ramírez', ''),
+    ('Angie11', '1717110255@utectulancingo.edu.mx', 'password2', 'Maria de los Angeles', 'Gayosso', 'Octaviano', '');
 
 
 CREATE TABLE IF NOT EXISTS categorias_productos (
@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS comentarios (
     id_recomendacion int,
     nombre_usuario varchar(20),
     contenido varchar(200) not null,
+    fecha_comentario timestamp default now(),
     foreign key (id_recomendacion) references recomendaciones(id_recomendacion),
     foreign key (nombre_usuario) references usuarios(nombre_usuario)
 );

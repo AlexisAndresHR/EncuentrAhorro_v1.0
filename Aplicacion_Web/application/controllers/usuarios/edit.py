@@ -41,7 +41,7 @@ class Edit:
     def GET(self, nombre_usuario, **k):
         message = None # Error message
         nombre_usuario = config.check_secure_val(str(nombre_usuario)) # HMAC nombre_usuario validate
-        result = config.model.get_usuarios(int(nombre_usuario)) # search for the nombre_usuario
+        result = config.model.get_usuarios(str(nombre_usuario)) # search for the nombre_usuario
         result.nombre_usuario = config.make_secure_val(str(result.nombre_usuario)) # apply HMAC for nombre_usuario
         return config.render.edit(result, message) # render usuarios edit.html
 

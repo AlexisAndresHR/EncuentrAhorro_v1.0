@@ -45,6 +45,6 @@ class Insert:
 
         # call model insert_comentarios and try to insert new data
         config.model.insert_comentarios(
-            form['id_recomendacion'],form['nombre_usuario'],form['contenido'],
+            form['id_recomendacion'],form['nombre_usuario'],form['contenido'],form['fecha_comentario'],
         )
         raise config.web.seeother('/comentarios') # render comentarios index.html
