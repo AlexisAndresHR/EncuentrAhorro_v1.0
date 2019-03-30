@@ -1,5 +1,0 @@
-'/favoritos', 'application.controllers.favoritos.index.Index',
-'/favoritos/view/(.+)', 'application.controllers.favoritos.view.View',
-'/favoritos/edit/(.+)', 'application.controllers.favoritos.edit.Edit',
-'/favoritos/delete/(.+)', 'application.controllers.favoritos.delete.Delete',
-'/favoritos/insert', 'application.controllers.favoritos.insert.Insert',

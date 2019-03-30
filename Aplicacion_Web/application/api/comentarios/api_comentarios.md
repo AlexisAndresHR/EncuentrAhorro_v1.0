@@ -1,1 +1,0 @@
-'/api_comentarios/?', 'application.api.comentarios.api_comentarios.Api_comentarios',

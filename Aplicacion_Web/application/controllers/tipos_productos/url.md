@@ -1,5 +1,0 @@
-'/tipos_productos', 'application.controllers.tipos_productos.index.Index',
-'/tipos_productos/view/(.+)', 'application.controllers.tipos_productos.view.View',
-'/tipos_productos/edit/(.+)', 'application.controllers.tipos_productos.edit.Edit',
-'/tipos_productos/delete/(.+)', 'application.controllers.tipos_productos.delete.Delete',
-'/tipos_productos/insert', 'application.controllers.tipos_productos.insert.Insert',
