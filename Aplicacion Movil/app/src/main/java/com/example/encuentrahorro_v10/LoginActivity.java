@@ -37,6 +37,10 @@ import android.content.Intent; // Import de prueba para cambio de interfaz (temp
 
 import static android.Manifest.permission.READ_CONTACTS;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
+
 /**
  * A login screen that offers login via email/password.
  */

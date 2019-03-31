@@ -145,5 +145,9 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
+    <!--SDK de android-->
+    <string name="facebook_app_id">501762847021436</string>
+    <string name="fb_login_protocol_scheme">fb501762847021436</string>
+
 
 </resources>
