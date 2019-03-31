@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent; // Import de prueba para cambio de interfaz (temporal)...
+import android.widget.Toast;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -64,20 +65,33 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                
+                goMainScreen();
             }
 
             @Override
             public void onCancel() {
-
+                Toast.makeText(getApplicationContext(),R.string.com_facebook_smart_login_confirmation_cancel, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException error) {
-
+                Toast.makeText(getApplicationContext(), R.string.com_facebook_internet_permission_error_message, Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    private void goMainScreen() {
+        Intent vista = new Intent(this, Activity_Inicio.class);
+        getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(vista);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 
 
     // Código para prueba de cambio de interfaz (temporal)...

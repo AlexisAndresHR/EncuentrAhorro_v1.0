@@ -152,6 +152,6 @@
     <string name="fb_login_protocol_scheme">fb501762847021436</string>
     <string name="todo">TODO</string>
     <string name="politicas">Al continuar, aceptas las Condiciones de servicio y la politica de privacidad de EncuentrAhorro</string>
-
+    <String name="cancel_login">Sesión cancelada</String>
 
 </resources>
