@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 
 public class Activity_Inicio extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,6 +26,11 @@ public class Activity_Inicio extends AppCompatActivity
         setContentView(R.layout.activity__inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // verificacion de session iniciada con facebook
+        if (AccessToken.getCurrentAccessToken() == null){
+            goLoginScreen(); // si es nulo significa que no hay una session iniciada
+        }
 
 /**
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +49,19 @@ public class Activity_Inicio extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+
+    /**
+     * Metodo para verificar si se tiene una sesion iniciada con Facebook
+     * si no regresara al login Activity
+     */
+    private void goLoginScreen() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
+
     }
 
     @Override
@@ -103,7 +123,8 @@ public class Activity_Inicio extends AppCompatActivity
             startActivity(cambio);
         }
         else if (id == R.id.nav_send) {
-
+            LoginManager.getInstance().logOut();
+            goLoginScreen();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
