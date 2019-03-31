@@ -12,6 +12,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="bienvenida">Te damos la bienvenida a EncuentrAhorro</string>
+    <string name="mejores_precios">Encuentra los mejores precios muy cerca de ti</string>
 
     <!-- Valores de la interfaz "Publicar Recomendacion" -->
     <string name="tv_titulo_rec">Publicar Recomendación</string>
@@ -70,7 +72,7 @@
 
 
     <string name="nombre_de_usuario_email">nombre_usuario</string>
-    <string name="email">mail</string>
+    <string name="email">correo</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -148,6 +150,8 @@
     <!--SDK de android-->
     <string name="facebook_app_id">501762847021436</string>
     <string name="fb_login_protocol_scheme">fb501762847021436</string>
+    <string name="todo">TODO</string>
+    <string name="politicas">Al continuar, aceptas las Condiciones de servicio y la politica de privacidad de EncuentrAhorro</string>
 
 
 </resources>

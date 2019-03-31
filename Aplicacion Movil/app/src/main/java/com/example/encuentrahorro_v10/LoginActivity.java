@@ -54,14 +54,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    // Código para prueba de cambio de interfaz (temporal)...
-    public void cambioInterfaz(View view) {
-        Intent cambio = new Intent(this, Activity_Inicio.class);
-        startActivity(cambio);
-    }
+
     // Código para prueba de cambio de interfaz (temporal)...
     public void inicio(View view) {
-        Intent vista = new Intent(this, Activity_Registro                                                                                                               .class);
+        Intent vista = new Intent(this, Activity_Inicio                                                                                                      .class);
         startActivity(vista);
     }
 
