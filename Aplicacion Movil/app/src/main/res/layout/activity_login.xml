@@ -55,100 +55,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
+                    <com.facebook.login.widget.LoginButton
+                        android:id="@+id/login_button"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/username"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/prompt_email"
-                            android:inputType="textEmailAddress"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:textColor="@color/colorAccent" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp">
-
-                        <EditText
-                            android:id="@+id/password"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/prompt_password"
-                            android:imeActionId="6"
-                            android:imeActionLabel="@string/action_sign_in_short"
-                            android:imeOptions="actionUnspecified"
-                            android:inputType="textPassword"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:textColor="@color/colorAccent" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <Button
-                        android:id="@+id/button_sign_in"
-                        style="?android:textAppearanceSmall"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="26dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="26dp"
-                        android:background="@color/cajasColo"
-                        android:onClick="cambioInterfaz"
-                        android:text="@string/action_sign_in"
-                        android:textColor="@android:color/background_light"
-                        android:textStyle="bold"
-                        tools:text="Ingresar" />
-
-                    <TextView
-                        android:id="@+id/link_forgot_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Olvidé mi contraseña"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorAccent"
-                        android:textStyle="bold"
-                        android:linksClickable="true"/>
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp" />
 
                 </LinearLayout>
             </ScrollView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/label_registrarse"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="¿No tienes una cuenta?"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorAccent" />
-
-                <Button
-                    android:id="@+id/button_registrarse"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="46dp"
-                    android:layout_marginRight="46dp"
-                    android:background="@color/cajasColo"
-                    android:onClick="inicio"
-                    android:text="Regístrate"
-                    android:textColor="@android:color/background_light" />
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
