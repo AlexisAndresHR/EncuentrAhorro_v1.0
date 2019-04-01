@@ -89,8 +89,8 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
     // Variables para las funciones de ubicacion del usuario
     private static final String TAG = Activity_PublicarRecomendacion.class.getName();
 
-    //private TextView mTvLatitud;
-    //private TextView mTvLongitud;
+    private TextView mTvLatitud;
+    private TextView mTvLongitud;
 
     private static final int RC_LOCATION_PERMISION= 100;
 
@@ -130,8 +130,8 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
         et_status = findViewById(R.id.et_Status);
 */
         //Conectar el UI con la Actividad
-        //mTvLatitud = (TextView) findViewById(R.id.latitud);
-        //mTvLongitud= (TextView) findViewById(R.id.longitud);
+        mTvLatitud = (TextView) findViewById(R.id.latitud);
+        mTvLongitud= (TextView) findViewById(R.id.longitud);
 
         //Solicitar permisos si es necesario (Android 6.0+)
         requestPermissionIfNeedIt();
@@ -313,8 +313,8 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
     }
     public void refreshUI(){
         if (mCurrentLocation != null) {
-            //mTvLatitud.setText(String.valueOf(mCurrentLocation.getLatitude()));
-            //mTvLongitud.setText(String.valueOf(mCurrentLocation.getLongitude()));
+            mTvLatitud.setText(String.valueOf(mCurrentLocation.getLatitude()));
+            mTvLongitud.setText(String.valueOf(mCurrentLocation.getLongitude()));
         }
     }
 
@@ -350,7 +350,6 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
     /*
      * Implementación del GoogleApiClient.OnConnectionFailedListener
      * */
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.e(TAG, "onConnectionFailed");
@@ -369,9 +368,11 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
      * Método para obtener y reflejar en el mapa la ubicacion del usuario (al hacer click en el boton).
      * @param view
      */
-    public void agregarUbicacion (View view) {
+    public void agregaUbicacion (View view) {
+
         latitud_ubi = mCurrentLocation.getLatitude();
         longitud_ubi = mCurrentLocation.getLongitude();
+
         // Get the SupportMapFragment and request notification when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_ubicacion);
@@ -380,4 +381,4 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
 
 
 
-} // Cirre de la clase principal del Activity.
+} // Cierre de la clase principal del Activity.

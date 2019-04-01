@@ -217,9 +217,23 @@
                     android:id="@+id/bt_agregar_ubicacion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="agregarUbicacion"
+                    android:onClick="agregaUbicacion"
                     android:text="@string/bt_agregar_ubicacion"
                     android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/latitud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Latitud"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/longitud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Longitud"
+                    android:textAlignment="center" />
 
                 <Button
                     android:id="@+id/bt_recomendar"
