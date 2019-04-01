@@ -26,6 +26,7 @@
     <string name="et_descripcion">Descripción del producto/servicio</string>
     <string name="tv_duracion">Duración:</string>
     <string name="tv_ubicacion">Ubicación:</string>
+    <string name="bt_agregar_ubicacion">Agregar Ubicación</string>
     <string name="bt_recomendar">RECOMENDAR</string>
 
     <!-- Valores de la interfaz "Buscar" -->
@@ -154,5 +155,9 @@
     <string name="politicas">Al continuar, aceptas las Condiciones de servicio y la politica de privacidad de EncuentrAhorro</string>
     <string name="errorFacebook">Error al iniciar sesión</string>
     <string name="cancelarFacebook">Acción Cancelada</string>
+
+
+    <!-- API Key para el funcionamiento de GMaps -->
+    <string name="google_maps_key">AIzaSyDwum3PNRs25Fo8OiHnuvXXw-2tmuiFL5E</string>
 
 </resources>

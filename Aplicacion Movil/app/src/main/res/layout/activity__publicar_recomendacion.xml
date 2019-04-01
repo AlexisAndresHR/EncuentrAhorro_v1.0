@@ -206,10 +206,20 @@
                 android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapView_ubicacion"
+                <fragment
+                    android:id="@+id/map_ubicacion"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="200dp"
+                    tools:context="com.example.mapwithmarker.MapsMarkerActivity" />
+
+                <Button
+                    android:id="@+id/bt_agregar_ubicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="agregarUbicacion"
+                    android:text="@string/bt_agregar_ubicacion"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <Button
                     android:id="@+id/bt_recomendar"

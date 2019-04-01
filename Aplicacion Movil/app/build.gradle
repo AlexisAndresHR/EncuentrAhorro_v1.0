@@ -32,4 +32,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)' //SDK de facebook
+    // Necesarios para funciones de ubicación
+    implementation 'com.google.android.gms:play-services-location:7.+'
+    implementation 'com.google.android.gms:play-services-gcm:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
 }
