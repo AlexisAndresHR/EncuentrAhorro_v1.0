@@ -26,6 +26,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -71,19 +73,18 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
     EditText et_precio;
     EditText et_descripcion;
     Spinner sp_duracion;
+    ArrayList<String> categorias;
+    ArrayList<String> productos;
+    ArrayList<String> duraciones;
 
     EditText et_latitud;
     EditText et_longitud;
 
     private String webservice_url = "http://webapp-encuentrahorro.herokuapp.com" +
             "./api_recomendaciones?user_hash=dc243fdf1a24cbced74db81708b30788&action=put&";
-
-
-    EditText et_nombre_usuario;
-    EditText et_num_megusta;
-    EditText et_num_comentarios;
-    EditText et_promedio_eva;
-    EditText et_status;
+    // Variable con dirección URL para consultar las Categorias.
+    private String webservice_url_2 = "http://webapp-encuentrahorro.herokuapp.com" +
+            "./api_categorias_productos?user_hash=dc243fdf1a24cbced74db81708b30788&action=get";
 
 
     // Variables para las funciones de ubicacion del usuario
@@ -118,17 +119,10 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
         et_precio = findViewById(R.id.et_precio);
         et_descripcion = findViewById(R.id.et_descripcion);
         sp_duracion = findViewById(R.id.sp_duracion);
-/*
-        et_latitud = findViewById(R.id.et_latitud);
-        et_longitud = findViewById(R.id.et_longitud);
-        et_id_categoria = findViewById(R.id.et_id_categoria);
-        et_id_producto = findViewById(R.id.et_id_producto);
-        et_nombre_usuario = findViewById(R.id.et_nombre_usuario);
-        et_num_megusta = findViewById(R.id.et_num_megusta);
-        et_num_comentarios = findViewById(R.id.et_num_comentarios);
-        et_promedio_eva = findViewById(R.id.et_promedio_eva);
-        et_status = findViewById(R.id.et_Status);
-*/
+
+
+
+
         //Conectar el UI con la Actividad
         mTvLatitud = (TextView) findViewById(R.id.latitud);
         mTvLongitud= (TextView) findViewById(R.id.longitud);
@@ -142,6 +136,14 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_ubicacion);
         mapFragment.getMapAsync(this);
+
+
+        // Llamada al método para obtener los registros de Categorias
+        webServiceRest2Categorias(webservice_url_2);
+        ArrayAdapter<CharSequence> adaptador_categoria = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categorias);
+        if (categorias != null)
+            sp_categoria.setAdapter(adaptador_categoria);
+
     }
 
 
@@ -151,18 +153,72 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
         startActivity(cambio2);
     }
 
+// Métodos para la consulta de valores y llenado de Spiiners (combobox's)
+
+
+    private void webServiceRest2Categorias(String requestURL){
+        try{
+            URL url = new URL(requestURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line = "";
+            String webServiceResult="";
+            while ((line = bufferedReader.readLine()) != null){
+                webServiceResult += line;
+            }
+            bufferedReader.close();
+            parseInformation2(webServiceResult);
+        }catch(Exception e){
+            Log.e("Error 103",e.getMessage());
+        }
+    }
+
+    private void parseInformation2(String jsonResult){
+        JSONArray jsonArray = null;
+        String id_categoria;
+        String nombre_categoria;
+        try{
+            jsonArray = new JSONArray(jsonResult);
+        }catch (JSONException e){
+            Log.e("Error 101",e.getMessage());
+        }
+        categorias = new ArrayList<String>();
+        categorias.add("--Seleccionar--");
+        for(int i=0;i<jsonArray.length();i++){
+            try{
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                //Se obtiene cada uno de los datos de categorias del webservice
+                id_categoria = jsonObject.getString("id_categoria");
+                nombre_categoria = jsonObject.getString("nombre_categoria");
+                categorias.add(id_categoria + ". " + nombre_categoria); // Agrega la categoria a la lista
+            }
+            catch (JSONException e){
+                Log.e("Error 102",e.getMessage());
+            }
+/*
+            catch (MalformedURLException e) {
+                Log.e("Error 103",e.getMessage());
+            }
+            catch (IOException e) {
+                Log.e("Error 104",e.getMessage());
+            }
+*/
+        }
+    }
+
+
 
 // Métodos para el envío de información al webservice (Recomendacion en JSON).
-    public void btn_insertOnClick(View view){
+    public void insertarRecomendacion(View view){
         StringBuilder sb = new StringBuilder();
         sb.append(webservice_url);
         sb.append("descripcion="+et_descripcion.getText());
         sb.append("&");
         sb.append("precio="+et_precio.getText());
         sb.append("&");
-        sb.append("latitud_ubi=0.0");
+        sb.append("latitud_ubi=" + latitud_ubi);
         sb.append("&");
-        sb.append("longitud_ubi=0.0");
+        sb.append("longitud_ubi=" + longitud_ubi);
         sb.append("&");
         sb.append("duracion=7");
         sb.append("&");
