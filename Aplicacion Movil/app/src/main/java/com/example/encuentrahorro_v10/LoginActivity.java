@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent vista = new Intent(this, Activity_Inicio.class);
         getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(vista);
+        LoginActivity.this.finish();
     }
 
     @Override
