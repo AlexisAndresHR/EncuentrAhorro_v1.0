@@ -85,6 +85,9 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
     // Variable con dirección URL para consultar las Categorias.
     private String webservice_url_2 = "http://webapp-encuentrahorro.herokuapp.com" +
             "./api_categorias_productos?user_hash=dc243fdf1a24cbced74db81708b30788&action=get";
+    // Variable con dirección URL para consultar los Tipos de Productos.
+    private String webservice_url_3 = "http://webapp-encuentrahorro.herokuapp.com" +
+            "./api_tipos_productos?user_hash=dc243fdf1a24cbced74db81708b30788&action=get";
 
 
     // Variables para las funciones de ubicacion del usuario
@@ -121,8 +124,6 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
         sp_duracion = findViewById(R.id.sp_duracion);
 
 
-
-
         //Conectar el UI con la Actividad
         mTvLatitud = (TextView) findViewById(R.id.latitud);
         mTvLongitud= (TextView) findViewById(R.id.longitud);
@@ -144,18 +145,33 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
         if (categorias != null)
             sp_categoria.setAdapter(adaptador_categoria);
 
+        // Llamada al método para obtener los registros de Tipos de Productos
+        webServiceRest3TiposProductos(webservice_url_3);
+        ArrayAdapter<CharSequence> adaptador_tipo = new ArrayAdapter(this, android.R.layout.simple_spinner_item, productos);
+        if (productos != null)
+            sp_tipoproducto.setAdapter(adaptador_tipo);
+
+        // Llena el Spinner (Combo Box) con las opciones de duración de recomendación.
+        duraciones = new ArrayList<String>();
+        duraciones.add("-- Seleccionar --");
+        duraciones.add("1 día");
+        duraciones.add("3 días");
+        duraciones.add("7 dias");
+        duraciones.add("14 dias");
+        ArrayAdapter<CharSequence> adaptador_duracion = new ArrayAdapter(this, android.R.layout.simple_spinner_item, duraciones);
+        if (duraciones != null)
+            sp_duracion.setAdapter(adaptador_duracion);
     }
 
 
     // Código para prueba de cambio de interfaz (temporal)...
-    public void cambioInterfaz2(View view) {
-        Intent cambio2 = new Intent(this, Activity_Buscar.class);
-        startActivity(cambio2);
-    }
+//    public void cambioInterfaz2(View view) {
+//        Intent cambio2 = new Intent(this, Activity_Buscar.class);
+//        startActivity(cambio2);
+//    }
+
 
 // Métodos para la consulta de valores y llenado de Spiiners (combobox's)
-
-
     private void webServiceRest2Categorias(String requestURL){
         try{
             URL url = new URL(requestURL);
@@ -183,17 +199,66 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
             Log.e("Error 101",e.getMessage());
         }
         categorias = new ArrayList<String>();
-        categorias.add("--Seleccionar--");
+        categorias.add("-- Seleccionar --");
         for(int i=0;i<jsonArray.length();i++){
             try{
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 //Se obtiene cada uno de los datos de categorias del webservice
                 id_categoria = jsonObject.getString("id_categoria");
                 nombre_categoria = jsonObject.getString("nombre_categoria");
-                categorias.add(id_categoria + ". " + nombre_categoria); // Agrega la categoria a la lista
+                categorias.add(id_categoria + " " + nombre_categoria); // Agrega la categoria a la lista
             }
             catch (JSONException e){
-                Log.e("Error 102",e.getMessage());
+                Log.e("Error 103",e.getMessage());
+            }
+/*
+            catch (MalformedURLException e) {
+                Log.e("Error 103",e.getMessage());
+            }
+            catch (IOException e) {
+                Log.e("Error 104",e.getMessage());
+            }
+*/
+        }
+    }
+    private void webServiceRest3TiposProductos(String requestURL){
+        try{
+            URL url = new URL(requestURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line = "";
+            String webServiceResult="";
+            while ((line = bufferedReader.readLine()) != null){
+                webServiceResult += line;
+            }
+            bufferedReader.close();
+            parseInformation3(webServiceResult);
+        }catch(Exception e){
+            Log.e("Error 104",e.getMessage());
+        }
+    }
+
+    private void parseInformation3(String jsonResult){
+        JSONArray jsonArray = null;
+        String id_producto;
+        String nombre_producto;
+        try{
+            jsonArray = new JSONArray(jsonResult);
+        }catch (JSONException e){
+            Log.e("Error 101",e.getMessage());
+        }
+        productos = new ArrayList<String>();
+        productos.add("-- Seleccionar --");
+        for(int i=0;i<jsonArray.length();i++){
+            try{
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                //Se obtiene cada uno de los datos de tipos de productos del webservice
+                id_producto = jsonObject.getString("id_producto");
+                nombre_producto = jsonObject.getString("nombre_producto");
+                productos.add(id_producto + " " + nombre_producto); // Agrega el tipo de producto a la lista
+            }
+            catch (JSONException e){
+                Log.e("Error 104",e.getMessage());
             }
 /*
             catch (MalformedURLException e) {
@@ -220,11 +285,25 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
         sb.append("&");
         sb.append("longitud_ubi=" + longitud_ubi);
         sb.append("&");
-        sb.append("duracion=7");
+        String duracion_seleccionada = sp_duracion.getSelectedItem().toString(); // Probando
+        String[] elementos_duracion = duracion_seleccionada.split(" ");
+        String dur = elementos_duracion[0];
+        sb.append("duracion="+ dur);
+        Log.v("  Duración: ", dur);
         sb.append("&");
-        sb.append("id_categoria=1");
+        String categoria_seleccionada = sp_categoria.getSelectedItem().toString(); // Probando
+        String[] elementos_categoria = categoria_seleccionada.split(" ");
+        Log.v("  Valor separado: ", elementos_categoria[0]);
+        Log.v("  Valor separado: ", elementos_categoria[1]);
+        String cat = elementos_categoria[0];
+        Log.v("  ID Categoría: ", cat);
+        sb.append("id_categoria=" + cat);
         sb.append("&");
-        sb.append("id_producto=1");
+        String producto_seleccionado = sp_tipoproducto.getSelectedItem().toString(); // Probando
+        String[] elementos_producto = producto_seleccionado.split(" ");
+        String prd = elementos_producto[0];
+        Log.v("  ID Producto: ", prd);
+        sb.append("id_producto=" + prd);
         sb.append("&");
         sb.append("nombre_usuario=AlexisHR");
         sb.append("&");
@@ -237,6 +316,10 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
         sb.append("recomendacion_activa=1");
         webServicePut(sb.toString());
         Log.e("URL",sb.toString());
+
+        // Envía a la interfaz de inicio una vez insertada la Recomendación en la BD
+        Intent cambio_inicio = new Intent(this, Activity_Inicio.class);
+        startActivity(cambio_inicio);
     }
     private void webServicePut(String requestURL){
         try{

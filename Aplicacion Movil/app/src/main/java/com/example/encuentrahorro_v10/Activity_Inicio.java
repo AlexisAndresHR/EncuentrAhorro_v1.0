@@ -27,11 +27,13 @@ public class Activity_Inicio extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /**
+
         // verificacion de session iniciada con facebook
         if (AccessToken.getCurrentAccessToken() == null){
             goLoginScreen(); // si es nulo significa que no hay una session iniciada
         }
-
+    **/
 
 /**
         fab.setOnClickListener(new View.OnClickListener() {
