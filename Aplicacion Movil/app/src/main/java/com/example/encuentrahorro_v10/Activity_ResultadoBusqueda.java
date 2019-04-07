@@ -59,7 +59,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.e("ITEM", lv_resultados_rec.getItemAtPosition(position).toString());
                 String datos_recomendacion[] =
-                        lv_resultados_rec.getItemAtPosition(position).toString().split(":");
+                        lv_resultados_rec.getItemAtPosition(position).toString().split(">");
                 String id_rec = datos_recomendacion[0];
                 Log.e("ID_RECOMENDACION",id_rec);
                 Intent i = new Intent(Activity_ResultadoBusqueda.this, Activity_DetalleRecomendacion.class);
@@ -142,7 +142,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
                 promedio_evaluaciones = jsonObject.getString("promedio_evaluaciones");
                 recomendacion_activa = jsonObject.getString("recomendacion_activa");
 
-                adapter.add(id_recomendacion + "    " + fecha + "    $" + precio + " \n " + descripcion);
+                adapter.add(id_recomendacion + " > " + fecha + "    $" + precio + " \n " + descripcion);
             }catch (JSONException e){
                 Log.e("Error 102",e.getMessage());
             }

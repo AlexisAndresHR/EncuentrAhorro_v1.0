@@ -26,7 +26,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import android.widget.TextView;
 
-public class Activity_DetalleRecomendacion extends AppCompatActivity {
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+
+public class Activity_DetalleRecomendacion extends AppCompatActivity implements OnMapReadyCallback {
 
     TextView tv_producto;
     TextView tv_precio;
@@ -35,8 +45,14 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity {
     TextView tv_nombreusuario;
     TextView tv_nummegusta;
     TextView tv_numcomentarios;
+
     private String webservice_url = "http://webapp-encuentrahorro.herokuapp.com" +
             "./api_recomendaciones?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&id_recomendacion=";
+
+    // Variables de prueba para almacenar latitud y longitud
+    private double latitud = 0.0;
+    private double longitud = 0.0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +74,11 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity {
         //Se cocnatena la url con el id_cliente para obtener los datos el cliente
         webservice_url+=id_recomendacion;
         webServiceRest(webservice_url);
+
+        // Get the SupportMapFragment and request notification when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map_ubicacion);
+        mapFragment.getMapAsync(this);
     }
 
 
@@ -130,6 +151,10 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity {
 //                Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection() .getInputStream());
 //                iv_imagen.setImageBitmap(mIcon_val);
 
+                // Actualiza las variables de latitud y longitud para mostrar en el mapa.
+                latitud = Double.parseDouble(latitud_ubi);
+                longitud = Double.parseDouble(longitud_ubi);
+
             }catch (JSONException e){
                 Log.e("Error 102",e.getMessage());
             }
@@ -142,6 +167,25 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity {
             }
 */
         }
+    }
+
+    /**
+     * Manipulates the map when it's available.
+     * The API invokes this callback when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user receives a prompt to install
+     * Play services inside the SupportMapFragment. The API invokes this method after the user has
+     * installed Google Play services and returned to the app.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        // Add a marker in Sydney, Australia,
+        // and move the map's camera to the same location.
+        LatLng sydney = new LatLng(latitud, longitud);
+        googleMap.addMarker(new MarkerOptions().position(sydney)
+                .title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
 
