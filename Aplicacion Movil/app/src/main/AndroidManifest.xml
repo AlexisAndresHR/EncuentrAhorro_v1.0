@@ -17,15 +17,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_ResultadoBusqueda"></activity>
-        <!-- Meta data para realizar una actividad con facebook -->
+        <activity android:name=".Activity_DetalleRecomendacion"></activity>
+        <activity android:name=".Activity_ResultadoBusqueda" /> <!-- Meta data para realizar una actividad con facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <!--              The API key for Google Maps-based APIs. -->
+            android:value="@integer/google_play_services_version" /> <!-- The API key for Google Maps-based APIs. -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

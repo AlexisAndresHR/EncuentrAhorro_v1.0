@@ -27,7 +27,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
     private ArrayAdapter adapter;
     private String url_consulta = "http://webapp-encuentrahorro.herokuapp.com" +
             "/api_recomendaciones?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&";
-    //public static final String ID_CLIENTE = "1";
+    public static final String ID_RECOMENDACION = "1"; // Variable para identificar la Recomendación seleccionada.
 
     private ArrayAdapter id_producto_cons;
     private String url_cons_id = "http://webapp-encuentrahorro.herokuapp.com" +
@@ -53,21 +53,20 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
         sb.append("id_producto="+id_relacionado);
         Log.e("URL",sb.toString());
         webServiceRest(sb.toString());
-/*
+
         lv_resultados_rec.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.e("ITEM", lv_resultados_rec.getItemAtPosition(position).toString());
                 String datos_recomendacion[] =
                         lv_resultados_rec.getItemAtPosition(position).toString().split(":");
-                String id_cliente = datos_recomendacion[0];
-                Log.e("ID_CLIENTE",id_cliente);
-                Intent i = new Intent(Activity_ResultadoBusqueda.this, Activity_Inicio.class);
-                i.putExtra(ID_CLIENTE,id_cliente);
+                String id_rec = datos_recomendacion[0];
+                Log.e("ID_RECOMENDACION",id_rec);
+                Intent i = new Intent(Activity_ResultadoBusqueda.this, Activity_DetalleRecomendacion.class);
+                i.putExtra(ID_RECOMENDACION,id_rec);
                 startActivity(i);
             }
         });
-*/
     }
 
     /**
