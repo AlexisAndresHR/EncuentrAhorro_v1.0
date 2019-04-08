@@ -19,43 +19,99 @@
 
             <TextView
                 android:id="@+id/tv_producto"
-                android:layout_width="match_parent"
+                android:layout_width="128dp"
                 android:layout_height="wrap_content"
                 android:text="Producto"
-                android:textSize="16sp" />
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_nombreusuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre de usuario"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_fecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha"
+                    android:textAlignment="textEnd"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_precio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Precio"
-                android:textSize="16sp" />
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="Descripción"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tv_fecha"
+            <fragment
+                android:id="@+id/map_ubicacion"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fecha"
-                android:textSize="16sp" />
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                tools:context="com.example.mapwithmarker.MapsMarkerActivity" />
 
-            <TextView
-                android:id="@+id/tv_nombreusuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nombre de usuario"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="395dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_calificacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Evaluaciones: "
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textColorLink="@android:color/holo_orange_dark"
+                    android:textSize="18sp" />
+
+                <RatingBar
+                    android:id="@+id/ratbar_promedioevaluaciones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:numStars="5"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:transformPivotX="0dp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
                 android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_megusta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Me gusta:" />
 
                 <TextView
                     android:id="@+id/tv_nummegusta"
@@ -63,7 +119,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="# Me Gusta"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_comentarios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Comentarios:" />
 
                 <TextView
                     android:id="@+id/tv_numcomentarios"
@@ -71,20 +135,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="# Comentarios"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp" />
             </LinearLayout>
-
-            <RatingBar
-                android:id="@+id/ratbar_promedioevaluaciones"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <fragment
-                android:id="@+id/map_ubicacion"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                tools:context="com.example.mapwithmarker.MapsMarkerActivity" />
 
         </LinearLayout>
     </ScrollView>
