@@ -160,4 +160,20 @@
     <!-- API Key para el funcionamiento de GMaps -->
     <string name="google_maps_key">AIzaSyDwum3PNRs25Fo8OiHnuvXXw-2tmuiFL5E</string>
 
+    <!-- Strings de detalle recomendacion -->
+    <string name="productoDetalle">Producto</string>
+    <string name="agregar_a_favoritos">Agregar a Favoritos</string>
+    <string name="nombre_de_usuario">Nombre de usuario</string>
+    <string name="fecha">Fecha</string>
+    <string name="precio">Precio</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="evaluaciones">Evaluaciones:</string>
+    <string name="me_gusta">Me gusta:</string>
+    <string name="me_gusta_detalle"># Me Gusta</string>
+    <string name="comentarios_detalle">Comentarios:</string>
+    <string name="comentarios"># Comentarios</string>
+    <string name="comentarios_de_la_recomendaci_n">Comentarios de la Recomendación</string>
+    <string name="ingresa_un_comentario">Ingresa un comentario</string>
+    <string name="enviar_comentario">Enviar Comentario</string>
+
 </resources>
