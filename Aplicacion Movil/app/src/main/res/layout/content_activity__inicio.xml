@@ -25,8 +25,8 @@
 
             <Button
                 android:id="@+id/btn_recomendaciones"
-                android:layout_width="261dp"
-                android:layout_height="158dp"
+                android:layout_width="269dp"
+                android:layout_height="147dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/recomendacion"
                 android:gravity="bottom"
@@ -39,8 +39,8 @@
 
             <Button
                 android:id="@+id/btn_favoritos"
-                android:layout_width="263dp"
-                android:layout_height="156dp"
+                android:layout_width="271dp"
+                android:layout_height="137dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/recomendaciones_favoritas"
                 android:gravity="bottom"
@@ -52,8 +52,8 @@
 
             <Button
                 android:id="@+id/btn_perfil"
-                android:layout_width="262dp"
-                android:layout_height="166dp"
+                android:layout_width="276dp"
+                android:layout_height="155dp"
                 android:background="@drawable/mi_perfil"
                 android:gravity="bottom"
                 android:text="Perfil"
