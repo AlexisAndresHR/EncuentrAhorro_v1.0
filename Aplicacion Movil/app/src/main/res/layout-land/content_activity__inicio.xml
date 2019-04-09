@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_inicio"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Activity_Inicio"
+    tools:showIn="@layout/app_bar_activity__inicio">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="174dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_recomendaciones"
+            android:layout_width="226dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/recomendacion"
+            android:gravity="bottom"
+            android:lineSpacingExtra="12sp"
+            android:text="Mis Recomendaciones"
+            android:textAllCaps="true"
+            android:textColor="@color/backgroundColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_favoritos"
+            android:layout_width="220dp"
+            android:layout_height="155dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/recomendaciones_favoritas"
+            android:gravity="bottom"
+            android:lineSpacingExtra="8sp"
+            android:text="Favoritos"
+            android:textColor="@color/backgroundColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_perfil"
+            android:layout_width="244dp"
+            android:layout_height="166dp"
+            android:background="@drawable/mi_perfil"
+            android:gravity="bottom"
+            android:text="Perfil"
+            android:textColor="@color/backgroundColor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</LinearLayout>
