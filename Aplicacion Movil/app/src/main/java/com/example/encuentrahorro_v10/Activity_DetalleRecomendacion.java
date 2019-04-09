@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import org.json.JSONArray;
@@ -45,6 +46,7 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
     TextView tv_nombreusuario;
     TextView tv_nummegusta;
     TextView tv_numcomentarios;
+    EditText edt_comentario;
 
     private String webservice_url = "http://webapp-encuentrahorro.herokuapp.com" +
             "./api_recomendaciones?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&id_recomendacion=";
@@ -52,6 +54,12 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
     // Variables de prueba para almacenar latitud y longitud
     private double latitud = 0.0;
     private double longitud = 0.0;
+
+    // Variables para las funciones de comentarios de la Recomendación
+    private ListView lv_comentarios;
+    private ArrayAdapter adapter_com;
+    private String url_comentarios = "http://webapp-encuentrahorro.herokuapp.com" +
+            "/api_comentarios?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&id_recomendacion=";
 
 
     @Override
@@ -66,6 +74,7 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
         tv_nombreusuario = findViewById(R.id.tv_nombreusuario);
         tv_nummegusta = findViewById(R.id.tv_nummegusta);
         tv_numcomentarios = findViewById(R.id.tv_numcomentarios);
+        edt_comentario = findViewById(R.id.edt_comentario);
 
         //Objeto tipo Intent para recuperar el parametro enviado
         Intent intent = getIntent();
@@ -79,6 +88,13 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_ubicacion);
         mapFragment.getMapAsync(this);
+
+        // Código para llamada a métodos de comentarios
+        lv_comentarios = findViewById(R.id.lv_comentarios);
+        adapter_com = new ArrayAdapter(this, R.layout.comentario_item); // Modificar posteriormente...
+        lv_comentarios.setAdapter(adapter_com);
+        url_comentarios+=id_recomendacion;
+        consultaComentariosRest(url_comentarios);
     }
 
 
@@ -184,8 +200,122 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
         // and move the map's camera to the same location.
         LatLng sydney = new LatLng(latitud, longitud);
         googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Sydney"));
+                .title("Lugar de la oferta"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+
+// Métodos para funciones de Comentarios en cada Recomendación.
+    private void consultaComentariosRest(String requestURL){
+        try{
+            URL url = new URL(requestURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line = "";
+            String webServiceResult="";
+            while ((line = bufferedReader.readLine()) != null){
+                webServiceResult += line;
+            }
+            bufferedReader.close();
+            parseInformationComentarios(webServiceResult);
+        }catch(Exception e){
+            Log.e("Error 200",e.getMessage());
+        }
+    }
+
+    private void parseInformationComentarios(String jsonResult){
+        JSONArray jsonArray = null;
+        String id_comentario;
+        String id_recomendacion;
+        String nombre_usuario;
+        String contenido;
+        String fecha_comentario;
+        try{
+            jsonArray = new JSONArray(jsonResult);
+        }catch (JSONException e){
+            Log.e("Error 201",e.getMessage());
+        }
+        for(int i=0;i<jsonArray.length();i++){
+            try{
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                id_comentario = jsonObject.getString("id_comentario");
+                id_recomendacion = jsonObject.getString("id_recomendacion");
+                contenido = jsonObject.getString("contenido");
+                nombre_usuario = jsonObject.getString("nombre_usuario");
+                fecha_comentario = jsonObject.getString("fecha_comentario");
+
+                adapter_com.add(nombre_usuario + " -> " + contenido + "  " + fecha_comentario);
+            }catch (JSONException e){
+                Log.e("Error 202",e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Método para insertar un nuevo comentario en la recomendación.
+     */
+    public void insertarComentario(View view) {
+        String url_insert_com = "http://webapp-encuentrahorro.herokuapp.com" +
+                "/api_comentarios?user_hash=dc243fdf1a24cbced74db81708b30788&action=put&";
+        StringBuilder sb2 = new StringBuilder();
+        Intent intent2 = getIntent();
+
+        sb2.append(url_insert_com);
+        sb2.append("id_recomendacion="+intent2.getStringExtra(Activity_ResultadoBusqueda.ID_RECOMENDACION));
+        sb2.append("&");
+        sb2.append("nombre_usuario="+tv_nombreusuario.getText());
+        sb2.append("&");
+        sb2.append("contenido="+edt_comentario.getText());
+
+        webServicePut(sb2.toString());
+        Log.e("URL Comentario: ",sb2.toString());
+    }
+
+    private void webServicePut(String requestURL){
+        try{
+            URL url = new URL(requestURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line = "";
+            String webServiceResult="";
+            while ((line = bufferedReader.readLine()) != null){
+                webServiceResult += line;
+            }
+            bufferedReader.close();
+            parseInformationPut(webServiceResult);
+        }catch(Exception e){
+            Log.e("Error 100",e.getMessage());
+        }
+    }
+
+    private void parseInformationPut(String jsonResult){
+        JSONArray jsonArray = null;
+        String id_comentario;
+        String id_recomendacion;
+        String nombre_usuario;
+        String contenido;
+        String fecha_comentario;
+        try{
+            jsonArray = new JSONArray(jsonResult);
+        }catch (JSONException e){
+            Log.e("Error 101",e.getMessage());
+        }
+        for(int i=0;i<jsonArray.length();i++){
+            try{
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                //Se obtiene cada uno de los datos cliente del webservice
+                id_comentario = jsonObject.getString("id_comentario");
+                id_recomendacion = jsonObject.getString("id_recomendacion");
+                contenido = jsonObject.getString("contenido");
+                nombre_usuario = jsonObject.getString("nombre_usuario");
+                fecha_comentario = jsonObject.getString("fecha_comentario");
+                Log.e("ID_COMENTARIO: ",id_comentario);
+                Log.e("ID_RECOMENDACION: ",id_recomendacion);
+                Log.e("CONTENIDO: ",contenido);
+            }catch (JSONException e){
+                Log.e("Error 102",e.getMessage());
+            }
+        }
     }
 
 

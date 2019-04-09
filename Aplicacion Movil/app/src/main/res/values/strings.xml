@@ -167,7 +167,7 @@
     <string name="fecha">Fecha</string>
     <string name="precio">Precio</string>
     <string name="descripci_n">Descripción</string>
-    <string name="evaluaciones">Evaluaciones:</string>
+    <string name="evaluaciones">Evaluaciones:  </string>
     <string name="me_gusta">Me gusta:</string>
     <string name="me_gusta_detalle"># Me Gusta</string>
     <string name="comentarios_detalle">Comentarios:</string>

@@ -215,6 +215,7 @@
                     android:layout_marginBottom="30dp"
                     android:layout_weight="1"
                     android:background="@color/colorAccent"
+                    android:onClick="insertarComentario"
                     android:text="@string/enviar_comentario"
                     android:textColor="@color/backgroundColor" />
 
