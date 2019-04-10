@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:orientation="vertical">
 
     <TextView
@@ -9,28 +10,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="ID Recomendación" />
+        android:text="ID Recomendación"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_fecha2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Fecha" />
+        android:text="Fecha"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_precio2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Precio" />
+        android:text="Precio"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_descripcion2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Descripción" />
+        android:text="Descripción"
+        android:textSize="16sp" />
 
 
 </LinearLayout>

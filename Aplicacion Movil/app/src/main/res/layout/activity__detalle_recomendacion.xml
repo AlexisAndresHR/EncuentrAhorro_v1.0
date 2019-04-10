@@ -98,7 +98,7 @@
                     android:text="@string/evaluaciones"
                     android:textColor="@android:color/holo_orange_dark"
                     android:textColorLink="@android:color/holo_orange_dark"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <RatingBar
                     android:id="@+id/ratbar_promedioevaluaciones"
@@ -121,7 +121,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/me_gusta" />
+                    android:text="@string/me_gusta"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_nummegusta"
@@ -137,7 +138,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/comentarios_detalle" />
+                    android:text="@string/comentarios_detalle"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_numcomentarios"

@@ -157,7 +157,7 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
 
                 // Muestreo de los datos de Recomendacion en la vista correspondiente
                 tv_producto.setText(id_producto);
-                tv_precio.setText(precio);
+                tv_precio.setText("$"+precio);
                 tv_descripcion.setText(descripcion);
                 tv_fecha.setText(fecha);
                 tv_nombreusuario.setText(nombre_usuario);

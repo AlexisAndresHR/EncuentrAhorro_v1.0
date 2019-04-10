@@ -47,7 +47,7 @@
                         android:textColorHighlight="@color/colorPrimary"
                         android:textColorLink="@color/colorPrimary"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -58,11 +58,12 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="60dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 android:background="@color/colorPrimary"
                 android:onClick="buscarRecomendaciones1"
                 android:text="@string/btns_buscar"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tv_titulo_buscar2"
@@ -71,7 +72,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/tv_titulo_bucar2"
                 android:textAlignment="center"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -86,14 +87,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_weight="1"
-                    android:text="@string/tv_estado" />
+                    android:text="@string/tv_estado"
+                    android:textSize="16sp" />
 
                 <Spinner
                     android:id="@+id/sp_estado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -108,14 +111,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_weight="1"
-                    android:text="@string/tv_ciudad" />
+                    android:text="@string/tv_ciudad"
+                    android:textSize="16sp" />
 
                 <Spinner
                     android:id="@+id/sp_ciudad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <TextView
@@ -125,7 +130,8 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
-                android:text="@string/tv_ordenarpor" />
+                android:text="@string/tv_ordenarpor"
+                android:textSize="16sp" />
 
             <RadioGroup
                 android:id="@+id/rgp_filtros"
@@ -162,7 +168,8 @@
                 android:background="@color/colorPrimary"
                 android:onClick="buscarRecomendaciones1"
                 android:text="@string/btns_buscar"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>
