@@ -20,7 +20,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="87dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal">
 
@@ -31,31 +31,6 @@
                     android:text="@string/productoDetalle"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/ibtn_agregar_favoritos"
-                        android:layout_width="54dp"
-                        android:layout_height="54dp"
-                        android:layout_gravity="end"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:textAlignment="textEnd"
-                        app:srcCompat="@drawable/favoritos" />
-
-                    <TextView
-                        android:id="@+id/tv_agregar_favoritos"
-                        android:layout_width="68dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_weight="1"
-                        android:text="@string/agregar_a_favoritos"
-                        android:textAlignment="textEnd" />
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -112,7 +87,7 @@
 
             <LinearLayout
                 android:layout_width="395dp"
-                android:layout_height="42dp"
+                android:layout_height="54dp"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
 
@@ -139,7 +114,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="30dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -179,6 +153,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ibtn_agregar_favoritos"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:textAlignment="center"
+                        app:srcCompat="@drawable/favoritos" />
+
+                    <TextView
+                        android:id="@+id/tv_agregar_favoritos"
+                        android:layout_width="68dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/agregar_a_favoritos" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_titulocomentarios"
