@@ -2,6 +2,8 @@ package com.example.encuentrahorro_v10;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.content.Intent;
 import android.os.StrictMode;
@@ -34,6 +36,9 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
             "/api_tipos_productos?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&";
     private String id_relacionado;
 
+    // Variables probando ...
+    String info_recomendaciones [][] = new String[4][4];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +50,9 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
         lv_resultados_rec = findViewById(R.id.lv_resultados_rec);
-        adapter = new ArrayAdapter(this, R.layout.recomendacion_item);
-        lv_resultados_rec.setAdapter(adapter);
+        //adapter = new ArrayAdapter(this, R.layout.recomendacion_item);
+        //lv_resultados_rec.setAdapter(adapter);
+        lv_resultados_rec.setAdapter(new Adaptador_ResultadoBusqueda(this, info_recomendaciones)); // Probando...
 
         StringBuilder sb = new StringBuilder();
         sb.append(url_consulta);
@@ -57,10 +63,11 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
         lv_resultados_rec.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("ITEM", lv_resultados_rec.getItemAtPosition(position).toString());
-                String datos_recomendacion[] =
-                        lv_resultados_rec.getItemAtPosition(position).toString().split(">");
-                String id_rec = datos_recomendacion[0];
+                //Log.e("ITEM", lv_resultados_rec.getItemAtPosition(position).toString());
+                //String datos_recomendacion[] =
+                //        lv_resultados_rec.getItemAtPosition(position).toString().split(">");
+                //String id_rec = datos_recomendacion[0];
+                String id_rec = info_recomendaciones[position][0];
                 Log.e("ID_RECOMENDACION",id_rec);
                 Intent i = new Intent(Activity_ResultadoBusqueda.this, Activity_DetalleRecomendacion.class);
                 i.putExtra(ID_RECOMENDACION,id_rec);
@@ -142,7 +149,18 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
                 promedio_evaluaciones = jsonObject.getString("promedio_evaluaciones");
                 recomendacion_activa = jsonObject.getString("recomendacion_activa");
 
-                adapter.add(id_recomendacion + " > " + fecha + "    $" + precio + " \n " + descripcion);
+                //adapter.add(id_recomendacion + " > " + fecha + "    $" + precio + " \n " + descripcion);
+
+                info_recomendaciones [i][0] = id_recomendacion;
+                info_recomendaciones [i][1] = fecha;
+                info_recomendaciones [i][2] = "$"+precio;
+                info_recomendaciones [i][3] = descripcion;
+/*
+                Log.e("ID_RECOMENDACION: ",info_recomendaciones[i][0]);
+                Log.e("FECHA: ",info_recomendaciones[i][1]);
+                Log.e("PRECIO: ",info_recomendaciones[i][2]);
+                Log.e("DESCRIPCION: ",info_recomendaciones[i][3]);
+*/
             }catch (JSONException e){
                 Log.e("Error 102",e.getMessage());
             }
@@ -193,6 +211,10 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
             }
         }
     }
+
+
+// Fragmento de código para la configuración estética de la lista de recomendaciones (Resultado de Búsqueda).
+
 
 
 } // Cierre de la clase principal.

@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tv_recomendacion_item"
-    android:textColor="@color/colorAccent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:textSize="18sp"
-    android:singleLine="true"
-    android:layout_height="28dp"/>
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_idrecomendacion2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="ID Recomendación" />
+
+    <TextView
+        android:id="@+id/tv_fecha2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Fecha" />
+
+    <TextView
+        android:id="@+id/tv_precio2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Precio" />
+
+    <TextView
+        android:id="@+id/tv_descripcion2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Descripción" />
+
+
+</LinearLayout>

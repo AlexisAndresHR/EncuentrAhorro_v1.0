@@ -379,7 +379,7 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
         // and move the map's camera to the same location.
         LatLng sydney = new LatLng(latitud_ubi, longitud_ubi);
         googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Sydney"));
+                .title("Lugar de la oferta"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
