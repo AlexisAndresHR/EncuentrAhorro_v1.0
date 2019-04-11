@@ -37,7 +37,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
     private String id_relacionado;
 
     // Variables probando ...
-    String info_recomendaciones [][] = new String[4][4];
+    String info_recomendaciones [][];
 
 
     @Override
@@ -48,18 +48,24 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
 
         recibirParametros();
 
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
-        lv_resultados_rec = findViewById(R.id.lv_resultados_rec);
-        //adapter = new ArrayAdapter(this, R.layout.recomendacion_item);
-        //lv_resultados_rec.setAdapter(adapter);
-        lv_resultados_rec.setAdapter(new Adaptador_ResultadoBusqueda(this, info_recomendaciones)); // Probando...
-
         StringBuilder sb = new StringBuilder();
         sb.append(url_consulta);
         sb.append("id_producto="+id_relacionado);
         Log.e("URL",sb.toString());
         webServiceRest(sb.toString());
 
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
+        lv_resultados_rec = findViewById(R.id.lv_resultados_rec);
+        //adapter = new ArrayAdapter(this, R.layout.recomendacion_item);
+        //lv_resultados_rec.setAdapter(adapter);
+        lv_resultados_rec.setAdapter(new Adaptador_ResultadoBusqueda(this, info_recomendaciones)); // Probando...
+/*
+        StringBuilder sb = new StringBuilder();
+        sb.append(url_consulta);
+        sb.append("id_producto="+id_relacionado);
+        Log.e("URL",sb.toString());
+        webServiceRest(sb.toString());
+*/
         lv_resultados_rec.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -83,7 +89,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
         Bundle parametros = getIntent().getExtras();
         String palabra_clave = parametros.getString("parametro1p");
         Log.v("  Valor como parámetro", palabra_clave);
-        tv_parametros.setText(palabra_clave);
+        tv_parametros.setText("Resultados para '" + palabra_clave + "'");
 
         StringBuilder sb2 = new StringBuilder();
         sb2.append(url_cons_id);
@@ -131,6 +137,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
         }catch (JSONException e){
             Log.e("Error 101",e.getMessage());
         }
+        info_recomendaciones = new String[(int)jsonArray.length()][4]; // Inicializa un arreglo dinámico bidimensional para los resultados de la consulta.
         for(int i=0;i<jsonArray.length();i++){
             try{
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
