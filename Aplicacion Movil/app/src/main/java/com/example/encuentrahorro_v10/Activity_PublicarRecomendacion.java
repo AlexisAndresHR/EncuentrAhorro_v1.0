@@ -171,7 +171,7 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
 //    }
 
 
-// Métodos para la consulta de valores y llenado de Spiiners (combobox's)
+// Métodos para la consulta de valores y llenado de Spiners (combobox's)
     private void webServiceRest2Categorias(String requestURL){
         try{
             URL url = new URL(requestURL);
@@ -273,54 +273,86 @@ public class Activity_PublicarRecomendacion extends AppCompatActivity implements
 
 
 
-// Métodos para el envío de información al webservice (Recomendacion en JSON).
+// Métodos para el envío de información (inserción de registro) al webservice (Recomendacion en JSON).
     public void insertarRecomendacion(View view){
-        StringBuilder sb = new StringBuilder();
-        sb.append(webservice_url);
-        sb.append("descripcion="+et_descripcion.getText());
-        sb.append("&");
-        sb.append("precio="+et_precio.getText());
-        sb.append("&");
-        sb.append("latitud_ubi=" + latitud_ubi);
-        sb.append("&");
-        sb.append("longitud_ubi=" + longitud_ubi);
-        sb.append("&");
-        String duracion_seleccionada = sp_duracion.getSelectedItem().toString(); // Probando
-        String[] elementos_duracion = duracion_seleccionada.split(" ");
-        String dur = elementos_duracion[0];
-        sb.append("duracion="+ dur);
-        Log.v("  Duración: ", dur);
-        sb.append("&");
-        String categoria_seleccionada = sp_categoria.getSelectedItem().toString(); // Probando
-        String[] elementos_categoria = categoria_seleccionada.split(" ");
-        Log.v("  Valor separado: ", elementos_categoria[0]);
-        Log.v("  Valor separado: ", elementos_categoria[1]);
-        String cat = elementos_categoria[0];
-        Log.v("  ID Categoría: ", cat);
-        sb.append("id_categoria=" + cat);
-        sb.append("&");
-        String producto_seleccionado = sp_tipoproducto.getSelectedItem().toString(); // Probando
-        String[] elementos_producto = producto_seleccionado.split(" ");
-        String prd = elementos_producto[0];
-        Log.v("  ID Producto: ", prd);
-        sb.append("id_producto=" + prd);
-        sb.append("&");
-        sb.append("nombre_usuario=AlexisHR");
-        sb.append("&");
-        sb.append("num_megusta=0");
-        sb.append("&");
-        sb.append("num_comentarios=0");
-        sb.append("&");
-        sb.append("promedio_evaluaciones=0.0");
-        sb.append("&");
-        sb.append("recomendacion_activa=1");
-        webServicePut(sb.toString());
-        Log.e("URL",sb.toString());
 
-        // Envía a la interfaz de inicio una vez insertada la Recomendación en la BD
-        Intent cambio_inicio = new Intent(this, Activity_Inicio.class);
-        startActivity(cambio_inicio);
+        if (sp_categoria.getSelectedItem().toString() != "-- Seleccionar --") {
+            if (sp_tipoproducto.getSelectedItem().toString() != "-- Seleccionar --") {
+                if (!et_precio.getText().toString().isEmpty()) {
+                    if (!et_descripcion.getText().toString().isEmpty()) {
+                        if (sp_duracion.getSelectedItem().toString() != "-- Seleccionar --") {
+                            StringBuilder sb = new StringBuilder();
+                            sb.append(webservice_url);
+                            sb.append("descripcion="+et_descripcion.getText());
+                            sb.append("&");
+                            sb.append("precio="+et_precio.getText());
+                            sb.append("&");
+                            sb.append("latitud_ubi=" + latitud_ubi);
+                            sb.append("&");
+                            sb.append("longitud_ubi=" + longitud_ubi);
+                            sb.append("&");
+                            String duracion_seleccionada = sp_duracion.getSelectedItem().toString();
+                            String[] elementos_duracion = duracion_seleccionada.split(" ");
+                            String dur = elementos_duracion[0];
+                            sb.append("duracion="+ dur);
+                            Log.v("  Duración: ", dur);
+                            sb.append("&");
+                            String categoria_seleccionada = sp_categoria.getSelectedItem().toString();
+                            String[] elementos_categoria = categoria_seleccionada.split(" ");
+                            Log.v("  Valor separado: ", elementos_categoria[0]);
+                            Log.v("  Valor separado: ", elementos_categoria[1]);
+                            String cat = elementos_categoria[0];
+                            Log.v("  ID Categoría: ", cat);
+                            sb.append("id_categoria=" + cat);
+                            sb.append("&");
+                            String producto_seleccionado = sp_tipoproducto.getSelectedItem().toString();
+                            String[] elementos_producto = producto_seleccionado.split(" ");
+                            String prd = elementos_producto[0];
+                            Log.v("  ID Producto: ", prd);
+                            sb.append("id_producto=" + prd);
+                            sb.append("&");
+                            sb.append("nombre_usuario=AlexisHR");
+                            sb.append("&");
+                            sb.append("num_megusta=0");
+                            sb.append("&");
+                            sb.append("num_comentarios=0");
+                            sb.append("&");
+                            sb.append("promedio_evaluaciones=0.0");
+                            sb.append("&");
+                            sb.append("recomendacion_activa=1");
+                            webServicePut(sb.toString());
+                            Log.e("URL",sb.toString());
+
+                            // Envía a la interfaz de inicio una vez insertada la Recomendación en la BD
+                            Intent cambio_inicio = new Intent(this, Activity_Inicio.class);
+                            startActivity(cambio_inicio);
+                        }
+                        else {
+                            Toast toast = Toast.makeText(this, R.string.toast_duracion, Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+                    }
+                    else {
+                        Toast toast = Toast.makeText(this, R.string.toast_descripcion, Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                }
+                else {
+                    Toast toast = Toast.makeText(this, R.string.toast_precio, Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
+            else {
+                Toast toast = Toast.makeText(this, R.string.toast_tipoproducto, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        }
+        else {
+            Toast toast = Toast.makeText(this, R.string.toast_categoria, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
+
     private void webServicePut(String requestURL){
         try{
             URL url = new URL(requestURL);
