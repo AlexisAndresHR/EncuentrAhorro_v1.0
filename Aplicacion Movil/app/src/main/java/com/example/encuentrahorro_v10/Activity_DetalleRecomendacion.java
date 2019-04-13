@@ -50,6 +50,10 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
 
     private String webservice_url = "http://webapp-encuentrahorro.herokuapp.com" +
             "./api_recomendaciones?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&id_recomendacion=";
+    // Variables para consultar el nombre del producto de la Recomendación.
+    private String consulta_nombreproducto = "http://webapp-encuentrahorro.herokuapp.com" +
+            "./api_tipos_productos?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&id_producto=";
+    private String nom_prod_obtenido;
 
     // Variables de prueba para almacenar latitud y longitud
     private double latitud = 0.0;
@@ -156,7 +160,9 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
                 recomendacion_activa = jsonObject.getString("recomendacion_activa");
 
                 // Muestreo de los datos de Recomendacion en la vista correspondiente
-                tv_producto.setText(id_producto);
+                consulta_nombreproducto+=id_producto; // Se completa la url de consulta al webservice con el id obtenido.
+                consultaNombreProducto(consulta_nombreproducto); // Llamada al método para consultar el nombre del producto.
+                tv_producto.setText(nom_prod_obtenido);
                 tv_precio.setText("$"+precio);
                 tv_descripcion.setText(descripcion);
                 tv_fecha.setText(fecha);
@@ -315,6 +321,59 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
             }catch (JSONException e){
                 Log.e("Error 102",e.getMessage());
             }
+        }
+    }
+
+// Métodos para realizar una consulta al web service sobre el nombre de un producto, en base a su id.
+    private void consultaNombreProducto(String requestURL){
+        try{
+            URL url = new URL(requestURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line = "";
+            String webServiceResult="";
+            while ((line = bufferedReader.readLine()) != null){
+                webServiceResult += line;
+            }
+            bufferedReader.close();
+            parseInfoNombreProducto(webServiceResult);
+        }catch(Exception e){
+            Log.e("Error 100",e.getMessage());
+        }
+    }
+
+    private void parseInfoNombreProducto(String jsonResult){
+        JSONArray jsonArray = null;
+        String id_producto;
+        String imagen_producto;
+        String nombre_producto;
+        String id_categoria;
+        try{
+            jsonArray = new JSONArray(jsonResult);
+        }catch (JSONException e){
+            Log.e("Error 101",e.getMessage());
+        }
+        for(int i=0;i<jsonArray.length();i++){
+            try{
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                // Se obtienen los datos del producto, del webservice.
+                id_categoria = jsonObject.getString("id_categoria");
+                imagen_producto = jsonObject.getString("imagen_producto");
+                nombre_producto = jsonObject.getString("nombre_producto");
+                id_producto = jsonObject.getString("id_producto");
+                nom_prod_obtenido = nombre_producto; // Agrega el nombre de producto_obtenido a la variable inicial.
+            }
+            catch (JSONException e){
+                Log.e("Error 102",e.getMessage());
+            }
+/*
+            catch (MalformedURLException e) {
+                Log.e("Error 103",e.getMessage());
+            }
+            catch (IOException e) {
+                Log.e("Error 104",e.getMessage());
+            }
+*/
         }
     }
 
