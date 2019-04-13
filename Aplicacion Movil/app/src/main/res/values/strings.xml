@@ -28,6 +28,11 @@
     <string name="tv_ubicacion">Ubicación:</string>
     <string name="bt_agregar_ubicacion">Agregar Ubicación</string>
     <string name="bt_recomendar">RECOMENDAR</string>
+    <string name="toast_categoria">Selecciona una Categoría</string>
+    <string name="toast_tipoproducto">Selecciona un Producto</string>
+    <string name="toast_precio">Ingresa el Precio</string>
+    <string name="toast_descripcion">Ingresa una Descripción</string>
+    <string name="toast_duracion">Selecciona una Duración</string>
 
     <!-- Valores de la interfaz "Buscar" -->
     <string name="tv_titulo_bucar1">Búsqueda por producto</string>
