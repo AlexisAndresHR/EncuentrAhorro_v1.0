@@ -129,6 +129,10 @@ public class Activity_Inicio extends AppCompatActivity
             LoginManager.getInstance().logOut();
             goLoginScreen();
         }
+        else if (id == R.id.nav_perfil) {
+            Intent cambio = new Intent(getApplicationContext(),Activity_Perfil.class);
+            startActivity(cambio);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

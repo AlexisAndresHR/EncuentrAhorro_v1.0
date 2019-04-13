@@ -7,27 +7,31 @@
         <item
             android:id="@+id/nav_buscar"
             android:icon="@android:drawable/ic_menu_search"
-            android:title="Buscar" />
+            android:title="@string/buscar" />
         <item
             android:id="@+id/nav_favoritos"
             android:icon="@android:drawable/btn_star"
-            android:title="Favoritos" />
+            android:title="@string/favoritos" />
         <item
             android:id="@+id/nav_recomendacion"
             android:icon="@android:drawable/ic_input_add"
-            android:title="Recomendación" />
+            android:title="@string/recomendaci_n" />
         <item
             android:id="@+id/nav_cambiocontrasena"
             android:icon="@android:drawable/ic_secure"
-            android:title="Cambiar contraseña" />
+            android:title="@string/contrase_a" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/communicate">
         <menu>
+            <item
+                android:id="@+id/nav_perfil"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/perfil" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Cerrar sesión" />
+                android:title="@string/cerrar_sesi_n" />
         </menu>
     </item>
 

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">EncuentrAhorro</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Nombre de Usuario</string>
@@ -175,5 +175,15 @@
     <string name="comentarios_de_la_recomendaci_n">Comentarios de la Recomendación</string>
     <string name="ingresa_un_comentario">Ingresa un comentario</string>
     <string name="enviar_comentario">Enviar Comentario</string>
+
+    <!--Strings de barra de navegacipn-->
+    <string name="buscar">Buscar</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="recomendaci_n">Recomendación</string>
+    <string name="contrase_a">Cambiar contraseña</string>
+    <string name="communicate">Communicate</string>
+    <string name="perfil">Perfil</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+
 
 </resources>

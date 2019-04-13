@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,7 +32,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import android.content.Intent; // Import de prueba para cambio de interfaz (temporal)...
@@ -39,13 +45,25 @@ import android.widget.Toast;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -55,6 +73,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private CircleImageView circleImageView;
+    private TextView txtName,txtEmail;
+
+    private String url_insertar_usuario = "http://webapp-encuentrahorro.herokuapp.com/api_usuarios?user_hash=dc243fdf1a24cbced74db81708b30788&action=put&";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +85,15 @@ public class LoginActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
+        //componentes para mostrar los datos del perfil
+        txtName = findViewById(R.id.profile_name);
+        txtEmail = findViewById(R.id.profile_email);
+        circleImageView = findViewById(R.id.profile_pic);
+
+        //el boton de login lee los permisos para obtener los datos del usuario
+        loginButton.setReadPermissions(Arrays.asList("email","public_profile"));
+        checkLoginStatus();
+
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -94,6 +125,132 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    /**
+     * Metodo que permite la devoluvion de llamada, para leer los permisos otorgados
+     *
+     */
+
+    AccessTokenTracker tokenTracker = new AccessTokenTracker() {
+        @Override
+        protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+            if(currentAccessToken==null)
+            {
+                txtName.setText("");
+                txtEmail.setText("");
+                circleImageView.setImageResource(0);
+                Toast.makeText(LoginActivity.this,"User Logged out",Toast.LENGTH_LONG).show();
+            }
+            else
+                loadUserProfile(currentAccessToken);
+        }
+    };
+
+    /**
+     * Obetner los datos del usuario, obtiene el nobre del usuario, id del usuario correo y su foto de perfil y los almacena en las variables
+     * primer nombre, segundo nombre, email, id, e image_url
+     * @param newAccessToken
+     */
+    private void loadUserProfile(AccessToken newAccessToken){
+        GraphRequest request = GraphRequest.newMeRequest(newAccessToken, new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response) {
+                try{
+                    String first_name = object.getString("first_name");
+                    String last_name = object.getString("last_name");
+                    String email = object.getString("email");
+                    String id = object.getString("id");
+                    String image_url = "https://graph.facebook.com/"+id+"/picture?type=normal";
+                    String nombre = (first_name+last_name.substring(0,3)+id.substring(0,4));
+
+                    //ver que las variables almacenan esos datos0
+                    Log.d("Nombre",nombre);
+                    Log.d("email",email);
+                    Log.d("Id",id);
+                    Log.d("Imagen",image_url);
+
+                    //Guardar los datos en la BD
+
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(url_insertar_usuario);
+                    sb.append("nombre_usuario="+nombre);
+                    sb.append("&");
+                    sb.append("email_usuario="+email);
+                    sb.append("&");
+                    sb.append("nombre="+first_name);
+                    sb.append("&");
+                    sb.append("apellido_pat="+last_name);
+                    sb.append("&promedio_evaluaciones=0&nivel_usuario=Promedio");
+
+                    webServicePut(sb.toString());
+                    Log.e("URL",sb.toString());
+
+                    /**
+                    //los datos son agregados a las cajas de texto
+                    txtEmail.setText(email);
+                    txtName.setText(first_name +" "+last_name);
+                    RequestOptions requestOptions = new RequestOptions();
+                    requestOptions.dontAnimate();
+                     **/
+
+                    //Glide.with(LoginActivity.this).load(image_url).into(circleImageView);
+
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields","first_name,last_name,email,id");
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
+
+    private void webServicePut(String requestURL){
+        try{
+            URL url = new URL(requestURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line = "";
+            String webServiceResult="";
+            while ((line = bufferedReader.readLine()) != null){
+                webServiceResult += line;
+            }
+            bufferedReader.close();
+            parseInformation(webServiceResult);
+        }catch(Exception e){
+            Log.e("Error 100",e.getMessage());
+        }
+    }
+
+    private void parseInformation(String jsonResult){
+        JSONArray jsonArray = null;
+        String status;
+        String description;
+        try{
+            jsonArray = new JSONArray(jsonResult);
+        }catch (JSONException e){
+            Log.e("Error 101",e.getMessage());
+        }
+        for(int i=0;i<jsonArray.length();i++){
+            try{
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                //Se obtiene cada uno de los datos cliente del webservice
+                status = jsonObject.getString("status");
+                description = jsonObject.getString("description");
+                Log.e("STATUS",status);
+                Log.e("DESCRIPTION",description);
+            }catch (JSONException e){
+                Log.e("Error 102",e.getMessage());
+            }
+        }
+    }
+    private void checkLoginStatus()
+    {
+        if(AccessToken.getCurrentAccessToken()!=null)
+        {
+            loadUserProfile(AccessToken.getCurrentAccessToken());
+        }
+    }
 
 
     // Código para prueba de cambio de interfaz (temporal)...
