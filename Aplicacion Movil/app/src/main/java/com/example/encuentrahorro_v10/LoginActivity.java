@@ -97,7 +97,6 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                goMainScreen();
             }
 
             @Override
@@ -138,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                 txtName.setText("");
                 txtEmail.setText("");
                 circleImageView.setImageResource(0);
-                Toast.makeText(LoginActivity.this,"User Logged out",Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this,"Sesión cerrada",Toast.LENGTH_LONG).show();
             }
             else
                 loadUserProfile(currentAccessToken);
@@ -161,6 +160,12 @@ public class LoginActivity extends AppCompatActivity {
                     String id = object.getString("id");
                     String image_url = "https://graph.facebook.com/"+id+"/picture?type=normal";
                     String nombre = (first_name+last_name.substring(0,3)+id.substring(0,4));
+                    String name = (first_name+" "+last_name);
+
+                    /**
+                     * se llama al metodo que mostrara los datos obtenidos del usuario
+                     */
+                    recibir_datos(name,email,image_url);
 
                     //ver que las variables almacenan esos datos0
                     Log.d("Nombre",nombre);
@@ -194,15 +199,32 @@ public class LoginActivity extends AppCompatActivity {
 
                     //Glide.with(LoginActivity.this).load(image_url).into(circleImageView);
 
+
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
+
             }
         });
         Bundle parameters = new Bundle();
         parameters.putString("fields","first_name,last_name,email,id");
         request.setParameters(parameters);
         request.executeAsync();
+    }
+
+    /**
+     * Recibe datos de Facebook para mostrarlos en diferentes Activitys
+     * Perfil y Barra de Menu
+     * @param name nombre del usuario
+     * @param email email del usuario
+     * @param image foto del perfil
+     */
+    private void recibir_datos (String name,String email,String image){
+        Intent inicio = new Intent(this,Activity_Inicio.class);
+        inicio.putExtra("nombre_usuario",name);
+        inicio.putExtra("email_usuario",email);
+        inicio.putExtra("image_usuario",image);
+        startActivity(inicio);
     }
 
     private void webServicePut(String requestURL){
@@ -252,12 +274,16 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
+    String nombre = "Alexis Andrés";
+    String email = "Alexis@gmail.com";
+    String image = "https://moodle.org/pluginfile.php/2678856/user/icon/moodleorgcleaned_moodleorg/f1?rev=1838857";
     // Código para prueba de cambio de interfaz (temporal)...
     public void inicio(View view) {
-        Intent vista = new Intent(this, Activity_Inicio                                                                                                      .class);
-        startActivity(vista);
+        Intent inicio = new Intent(this,Activity_Inicio.class);
+        inicio.putExtra("nombre_usuario",nombre);
+        inicio.putExtra("email_usuario",email);
+        inicio.putExtra("image_usuario",image);
+        startActivity(inicio);
     }
-
 }
 

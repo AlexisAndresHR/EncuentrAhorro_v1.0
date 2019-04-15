@@ -23,26 +23,31 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="297dp"
+                android:layout_height="218dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="202dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="198dp"
+                    android:gravity="center|top"
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_pic"
-                        android:layout_width="match_parent"
-                        android:layout_height="167dp" />
+                        android:layout_width="144dp"
+                        android:layout_height="132dp"
+                        android:gravity="center" />
 
                     <TextView
                         android:id="@+id/profile_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -51,56 +56,53 @@
                         android:id="@+id/profile_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textAlignment="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="179dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="30dp"
-                    android:paddingTop="100dp">
-
-                    <TextView
-                        android:id="@+id/tv_puntos"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="50dp"
-                        android:text="@string/_50_puntos" />
-
-                    <TextView
-                        android:id="@+id/tv_nivel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="50dp"
-                        android:text="@string/pro" />
-                </LinearLayout>
-
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button_cambiar_contraseña"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="46dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="46dp"
-                android:background="@color/cajasColo"
-                android:text="@string/cambiar_contrase_a"
-                android:textColor="@android:color/background_light" />
-            <Button
-                android:id="@+id/button_cambiar_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="46dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="46dp"
-                android:background="@color/cajasColo"
-                android:text="@string/cambiar_email"
-                android:textColor="@android:color/background_light" />
+                <TextView
+                    android:id="@+id/tv_puntos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/_50_puntos"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_nivel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Nivel: Promedio"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/id_cerrar"
+                        android:layout_width="325dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:text="Cerrar Sesión"
+                        android:textColor="@color/backgroundColor" />
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

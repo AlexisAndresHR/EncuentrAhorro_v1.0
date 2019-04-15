@@ -13,11 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Activity_Inicio extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private CircleImageView circleImageView;
+    private TextView txtName,txtEmail;
 
 
     @Override
@@ -54,6 +61,20 @@ public class Activity_Inicio extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void recibirdatos() {
+        Bundle extras = getIntent().getExtras();
+        String nombre = extras.getString("nombre_usuario");
+        String correo = extras.getString("email_usuario");
+        String imagen = extras.getString("image_usuario");
+
+        txtName = findViewById(R.id.profile_name);
+        txtEmail = findViewById(R.id.profile_email);
+        circleImageView = findViewById(R.id.profile_pic);
+        //los datos son agregados a las cajas de texto
+        txtEmail.setText(correo);
+        txtName.setText(nombre);
+        Glide.with(Activity_Inicio.this).load(imagen).into(circleImageView);
+    }
 
     /**
      * Metodo para verificar si se tiene una sesion iniciada con Facebook
@@ -81,6 +102,7 @@ public class Activity_Inicio extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity__inicio, menu);
+        recibirdatos();
         return true;
     }
 
@@ -126,12 +148,19 @@ public class Activity_Inicio extends AppCompatActivity
             startActivity(cambio);
         }
         else if (id == R.id.nav_send) {
-            LoginManager.getInstance().logOut();
-            goLoginScreen();
+            finish();
         }
         else if (id == R.id.nav_perfil) {
-            Intent cambio = new Intent(getApplicationContext(),Activity_Perfil.class);
-            startActivity(cambio);
+            Bundle extras = getIntent().getExtras();
+            String nombre = extras.getString("nombre_usuario");
+            String correo = extras.getString("email_usuario");
+            String imagen = extras.getString("image_usuario");
+
+            Intent intent = new Intent(this,Activity_Perfil.class);
+            intent.putExtra("nombre_usuario",nombre);
+            intent.putExtra("email_usuario",correo);
+            intent.putExtra("image_usuario",imagen);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
