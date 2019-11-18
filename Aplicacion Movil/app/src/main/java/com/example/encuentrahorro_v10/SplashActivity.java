@@ -12,7 +12,7 @@ import android.widget.ImageView;
 public class SplashActivity extends AppCompatActivity {
 
     private ImageView oso_loading;
-    private static int splashTimeOut=3000;
+    private static int splashTimeOut=5000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this,LoginActivity.class);
+                Intent i = new Intent(SplashActivity.this,Activity_TipoUsuario.class);
                 startActivity(i);
                 finish();
             }

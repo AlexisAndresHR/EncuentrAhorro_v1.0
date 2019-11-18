@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_DetalleRecomendacion"></activity>
+        <activity android:name=".Activity_DetalleRecomendacion" />
         <activity android:name=".Activity_ResultadoBusqueda" /> <!-- Meta data para realizar una actividad con facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -60,6 +60,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity_TipoUsuario"></activity>
     </application>
 
 </manifest>

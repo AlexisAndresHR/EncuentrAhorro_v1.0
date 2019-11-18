@@ -44,6 +44,14 @@
                     app:srcCompat="@drawable/icono_login" />
 
                 <TextView
+                    android:id="@+id/tv_mejores"
+                    android:layout_width="match_parent"
+                    android:layout_height="66dp"
+                    android:text="@string/mejores_precios"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
                     android:id="@+id/tv_bienvenida"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,14 +61,6 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_mejores"
-                    android:layout_width="match_parent"
-                    android:layout_height="66dp"
-                    android:text="@string/mejores_precios"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -113,7 +113,7 @@
                         android:textAlignment="center" />
 
                 </LinearLayout>
-<!--
+                <!--
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="175dp"
                     android:layout_height="175dp"
