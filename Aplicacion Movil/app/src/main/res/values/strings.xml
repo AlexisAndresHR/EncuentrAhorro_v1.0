@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">EncuentrAhorro</string>
-    <!-- Strings related to login -->
+
+    <!-- Strings related to login & login_tienda -->
     <string name="prompt_email">Nombre de Usuario</string>
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Ingresar</string>
@@ -14,6 +15,11 @@
     </string>
     <string name="bienvenida">Te damos la bienvenida a EncuentrAhorro</string>
     <string name="mejores_precios">Encuentra los mejores precios muy cerca de ti</string>
+    <string name="bienvenida_tienda">Bienvenido a las tiendas registradas EncuentrAhorro</string>
+    <string name="nombre_tienda">Nombre de la tienda</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="btn_ingresar">INGRESAR</string>
+
 
     <!-- Valores de la interfaz "Publicar Recomendacion" -->
     <string name="tv_titulo_rec">Publicar Recomendación</string>
