@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#C62828</color>
     <color name="colorPrimaryDark">#8B0000</color>
-    <color name="colorAccent">#8B0000</color>
-    <color name="backgroundColor">#FFFFFF</color>
+    <color name="colorAccent">#8b0000</color>
+    <color name="backgroundColor">#ffffff</color>
     <color name="cajasColo">#8B0000</color>
+    <color name="Transparent">#00ffffff</color>
 </resources>

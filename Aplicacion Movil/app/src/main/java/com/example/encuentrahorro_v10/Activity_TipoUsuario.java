@@ -17,4 +17,8 @@ public class Activity_TipoUsuario extends AppCompatActivity {
         Intent cambio = new Intent(this, LoginActivity.class);
         startActivity(cambio);
     }
+    public void interfazTienda(View view) {
+        Intent cambio = new Intent(this, Activity_LoginTienda.class);
+        startActivity(cambio);
+    }
 }

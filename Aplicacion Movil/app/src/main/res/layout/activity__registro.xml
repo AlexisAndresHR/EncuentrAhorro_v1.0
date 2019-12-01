@@ -24,13 +24,11 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView_logo"
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="232dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="30dp"
-                app:srcCompat="@drawable/perfil"
-                android:contentDescription="TODO" />
+                android:layout_height="169dp"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/icono_login" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -109,11 +107,6 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/al_crear_una_cuenta_confirmas_aceptar_nuestras" />
 
-                <TextView
-                    android:id="@+id/tv_politicas2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/reglas_y_pol_ticas_de_privacidad" />
 
                 <CheckBox
                     android:id="@+id/cb_acepta"
@@ -130,7 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="46dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="46dp"
                 android:background="@color/cajasColo"
                 android:text="aceptar"

@@ -60,7 +60,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity_TipoUsuario"></activity>
+        <activity android:name=".Activity_TipoUsuario" />
+        <activity
+            android:name=".Activity_LoginTienda"
+            android:label="@string/title_activity__login_tienda"></activity>
     </application>
 
 </manifest>

@@ -25,10 +25,9 @@
             <ImageView
                 android:id="@+id/imageView_logo"
                 android:layout_width="match_parent"
-                android:layout_height="232dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="30dp"
-                app:srcCompat="@drawable/perfil" />
+                android:layout_height="169dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/icono_login" />
 
             <TextView
                 android:id="@+id/tv_nombre_user"

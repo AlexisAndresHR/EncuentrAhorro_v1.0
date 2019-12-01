@@ -73,7 +73,7 @@
 
     <!-- Valores de la interfaz de Registro-->
     <string name="a_adir_foto">Añadir foto</string>
-    <string name="al_crear_una_cuenta_confirmas_aceptar_nuestras">Al crear una cuenta confirmas aceptar nuestras</string>
+    <string name="al_crear_una_cuenta_confirmas_aceptar_nuestras">Al crear una cuenta confirmas aceptar nuestras reglas y políticas de privacidad</string>
     <string name="reglas_y_pol_ticas_de_privacidad">reglas y políticas de privacidad</string>
     <string name="acepto_terminos_y_condiciones">Acepto Terminos y Condiciones</string>
     <string name="ingresa">Ingresa el codigo de verificación</string>
@@ -195,6 +195,8 @@
     <string name="communicate">Communicate</string>
     <string name="perfil">Perfil</string>
     <string name="cerrar_sesi_n">Cerrar sesión</string>
+    <string name="title_activity__login_tienda">Sign in</string>
+    <string name="nombre_tiendaLogin">Nombre de la tienda</string>
 
 
 </resources>
