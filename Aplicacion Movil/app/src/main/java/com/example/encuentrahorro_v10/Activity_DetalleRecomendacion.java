@@ -131,7 +131,9 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
         String id_categoria;
         String id_producto;
         String nombre_usuario;
-        String num_megusta;
+        String id_tienda;
+        String rec_confiable;
+        String rec_falsa;
         String num_comentarios;
         String promedio_evaluaciones;
         String recomendacion_activa;
@@ -154,7 +156,9 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
                 id_categoria = jsonObject.getString("id_categoria");
                 id_producto = jsonObject.getString("id_producto");
                 nombre_usuario = jsonObject.getString("nombre_usuario");
-                num_megusta = jsonObject.getString("num_megusta");
+                id_tienda = jsonObject.getString("id_tienda");
+                rec_confiable = jsonObject.getString("rec_confiable");
+                rec_falsa = jsonObject.getString("rec_falsa");
                 num_comentarios = jsonObject.getString("num_comentarios");
                 promedio_evaluaciones = jsonObject.getString("promedio_evaluaciones");
                 recomendacion_activa = jsonObject.getString("recomendacion_activa");
@@ -167,7 +171,7 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
                 tv_descripcion.setText(descripcion);
                 tv_fecha.setText(fecha);
                 tv_nombreusuario.setText(nombre_usuario);
-                tv_nummegusta.setText(num_megusta);
+                tv_nummegusta.setText(rec_confiable);
                 tv_numcomentarios.setText(num_comentarios);
 //                URL newurl = new URL(images_url+imagen);
 //                Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection() .getInputStream());
