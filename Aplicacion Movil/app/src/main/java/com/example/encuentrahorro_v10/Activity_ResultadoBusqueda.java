@@ -38,6 +38,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
 
     // Variables probando ...
     String info_recomendaciones [][];
+    String nom_prod = "";
 
 
     @Override
@@ -73,7 +74,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
                 //String datos_recomendacion[] =
                 //        lv_resultados_rec.getItemAtPosition(position).toString().split(">");
                 //String id_rec = datos_recomendacion[0];
-                String id_rec = info_recomendaciones[position][0];
+                String id_rec = info_recomendaciones[position][5];
                 Log.e("ID_RECOMENDACION",id_rec);
                 Intent i = new Intent(Activity_ResultadoBusqueda.this, Activity_DetalleRecomendacion.class);
                 i.putExtra(ID_RECOMENDACION,id_rec);
@@ -139,7 +140,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
         }catch (JSONException e){
             Log.e("Error 101",e.getMessage());
         }
-        info_recomendaciones = new String[(int)jsonArray.length()][4]; // Inicializa un arreglo dinámico bidimensional para los resultados de la consulta.
+        info_recomendaciones = new String[(int)jsonArray.length()][6]; // Inicializa un arreglo dinámico bidimensional para los resultados de la consulta.
         for(int i=0;i<jsonArray.length();i++){
             try{
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -162,10 +163,12 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
 
                 //adapter.add(id_recomendacion + " > " + fecha + "    $" + precio + " \n " + descripcion);
 
-                info_recomendaciones [i][0] = id_recomendacion;
+                info_recomendaciones [i][0] = nombre_usuario;
                 info_recomendaciones [i][1] = fecha;
-                info_recomendaciones [i][2] = "$"+precio;
-                info_recomendaciones [i][3] = descripcion;
+                info_recomendaciones [i][2] = nom_prod; // Asigna la variable obtenida de la consulta anterior (parseInformation2).
+                info_recomendaciones [i][3] = "$"+precio;
+                info_recomendaciones [i][4] = descripcion;
+                info_recomendaciones [i][5] = id_recomendacion;
 /*
                 Log.e("ID_RECOMENDACION: ",info_recomendaciones[i][0]);
                 Log.e("FECHA: ",info_recomendaciones[i][1]);
@@ -217,6 +220,8 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
 
                 //adapter.add(id_producto + " " + nombre_producto);
                 id_relacionado = id_producto;
+                nom_prod = nombre_producto;
+
             }catch (JSONException e){
                 Log.e("Error 105",e.getMessage());
             }

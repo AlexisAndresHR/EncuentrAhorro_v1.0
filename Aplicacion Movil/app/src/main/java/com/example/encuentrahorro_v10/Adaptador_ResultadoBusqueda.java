@@ -29,20 +29,24 @@ public class Adaptador_ResultadoBusqueda extends BaseAdapter {
         try {
             vista = inflater.inflate(R.layout.recomendacion_item, null);
 
-            TextView id_recomendacion = (TextView) vista.findViewById(R.id.tv_idrecomendacion2);
+            TextView nombre_usuario = (TextView) vista.findViewById(R.id.tv_nombreusuario2);
             TextView fecha = (TextView) vista.findViewById(R.id.tv_fecha2);
+            TextView nombre_producto = (TextView) vista.findViewById(R.id.tv_nombreproducto2);
             TextView precio = (TextView) vista.findViewById(R.id.tv_precio2);
             TextView descripcion = (TextView) vista.findViewById(R.id.tv_descripcion2);
 
-            id_recomendacion.setText(info_recomendaciones[i][0]);
+            nombre_usuario.setText(info_recomendaciones[i][0]);
             fecha.setText(info_recomendaciones[i][1]);
-            precio.setText(info_recomendaciones[i][2]);
-            descripcion.setText(info_recomendaciones[i][3]);
+            nombre_producto.setText(info_recomendaciones[i][2]);
+            precio.setText(info_recomendaciones[i][3]);
+            descripcion.setText(info_recomendaciones[i][4]);
 
-            Log.e("ID_RECOMENDACION: ",info_recomendaciones[i][0]);
+
+            Log.e("NOMBRE_USUARIO: ",info_recomendaciones[i][0]);
             Log.e("FECHA: ",info_recomendaciones[i][1]);
-            Log.e("PRECIO: ",info_recomendaciones[i][2]);
-            Log.e("DESCRIPCION: ",info_recomendaciones[i][3]);
+            Log.e("NOMBRE_PRODUCTO: ",info_recomendaciones[i][2]);
+            Log.e("PRECIO: ",info_recomendaciones[i][3]);
+            Log.e("DESCRIPCION: ",info_recomendaciones[i][4]);
 
         } catch (Exception e) {
             Log.e("Error 300", e.getMessage());
