@@ -65,6 +65,8 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
     private String url_comentarios = "http://webapp-encuentrahorro.herokuapp.com" +
             "/api_comentarios?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&id_recomendacion=";
 
+    String nom_tienda_2 = ""; // Variable para almacenar el nombre del comercio (después de la consulta de información)
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,9 +172,15 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
                 tv_precio.setText("$"+precio);
                 tv_descripcion.setText(descripcion);
                 tv_fecha.setText(fecha);
-                tv_nombreusuario.setText(nombre_usuario);
-                tv_nummegusta.setText(rec_confiable);
+                tv_nummegusta.setText(rec_confiable); // Modificar posteriormente ...
                 tv_numcomentarios.setText(num_comentarios);
+                if (nombre_usuario != "null")
+                    tv_nombreusuario.setText(nombre_usuario);
+                else {
+                    obtenerNombreTienda(Integer.parseInt(id_tienda));
+                    tv_nombreusuario.setText(nom_tienda_2);
+                }
+
 //                URL newurl = new URL(images_url+imagen);
 //                Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection() .getInputStream());
 //                iv_imagen.setImageBitmap(mIcon_val);
@@ -378,6 +386,66 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
                 Log.e("Error 104",e.getMessage());
             }
 */
+        }
+    }
+
+
+
+    /**
+     * Método para consultar información del comercio (tienda) y colocar su nombre en los resultados de búsqueda.
+     * @param id
+     */
+    private void obtenerNombreTienda (int id) {
+        String url_consulta01 = "http://webapp-encuentrahorro.herokuapp.com" +
+                "/api_tiendas?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&";
+        StringBuilder sb_3 = new StringBuilder();
+        sb_3.append(url_consulta01);
+        sb_3.append("id_tienda="+id);
+        Log.e("  URL 69 obtenida: ",sb_3.toString());
+        consultaInfoTienda(sb_3.toString());
+    }
+
+
+    private void consultaInfoTienda(String requestURL){
+        try{
+            URL url = new URL(requestURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line = "";
+            String webServiceResult_2="";
+            while ((line = bufferedReader.readLine()) != null){
+                webServiceResult_2 += line;
+            }
+            bufferedReader.close();
+            parseInformation3(webServiceResult_2);
+        }catch(Exception e){
+            Log.e("Error 131",e.getMessage());
+        }
+    }
+
+    private void parseInformation3(String jsonResult){
+        JSONArray jsonArray = null;
+        String id_tienda;
+        String nombre_tienda;
+        String nom_acceso_tienda;
+        try{
+            jsonArray = new JSONArray(jsonResult);
+        }catch (JSONException e){
+            Log.e("Error 132",e.getMessage());
+        }
+        for(int i=0;i<jsonArray.length();i++){
+            try{
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                id_tienda = jsonObject.getString("id_tienda");
+                nombre_tienda = jsonObject.getString("nombre_tienda");
+                nom_acceso_tienda = jsonObject.getString("nom_acceso_tienda");
+
+                //adapter.add(id_producto + " " + nombre_producto);
+                nom_tienda_2 = nombre_tienda;
+
+            }catch (JSONException e){
+                Log.e("Error 133",e.getMessage());
+            }
         }
     }
 
