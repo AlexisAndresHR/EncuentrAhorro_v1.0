@@ -1,5 +1,6 @@
 package com.example.encuentrahorro_v10;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -71,16 +72,23 @@ public class Activity_InicioTienda extends AppCompatActivity implements Navigati
         int id = item.getItemId();
 
         if (id == R.id.nav_buscar) {
-            // Handle the camera action
-        } else if (id == R.id.nav_favoritos) {
+            // Envía a la interfaz de BUSQUEDA
+            Intent cambio = new Intent(getApplicationContext(),Activity_Buscar.class);
+            startActivity(cambio);
+        } else if (id == R.id.nav_publicar_oferta) {
+            // Envía a la interfaz de RECOMENDACION
+            Intent cambio = new Intent(getApplicationContext(),Activity_PublicarRecomendacion.class);
+            startActivity(cambio);
 
-        } else if (id == R.id.nav_recomendacion) {
-
-        } else if (id == R.id.nav_cambiocontrasena) {
+        }else if (id == R.id.nav_cambiar_contrasena) {
+            // Envía a la interfaz de CAMBIAR CONTRASENA
+            Intent cambio = new Intent(getApplicationContext(),Activity_CambiarContrasenia.class);
+            startActivity(cambio);
 
         } else if (id == R.id.nav_perfil) {
 
         } else if (id == R.id.nav_send) {
+            finish();
 
         }
 
