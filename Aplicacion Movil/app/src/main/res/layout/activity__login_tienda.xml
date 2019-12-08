@@ -119,6 +119,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
+                android:onClick="inicioTienda"
                 android:text="@string/btn_ingresar"
                 android:textColor="@color/backgroundColor"
                 android:visibility="visible" />

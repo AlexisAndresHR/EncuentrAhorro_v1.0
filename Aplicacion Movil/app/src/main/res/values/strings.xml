@@ -5,7 +5,7 @@
     <string name="prompt_email">Nombre de Usuario</string>
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Ingresar</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short">Iniciar sesión</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -187,6 +187,7 @@
     <string name="ingresa_un_comentario">Ingresa un comentario</string>
     <string name="enviar_comentario">Enviar Comentario</string>
 
+
     <!--Strings de barra de navegacipn-->
     <string name="buscar">Buscar</string>
     <string name="favoritos">Favoritos</string>
@@ -195,8 +196,11 @@
     <string name="communicate">Communicate</string>
     <string name="perfil">Perfil</string>
     <string name="cerrar_sesi_n">Cerrar sesión</string>
-    <string name="title_activity__login_tienda">Sign in</string>
+
+
+    <string name="title_activity__login_tienda">Iniciar Sesión</string>
     <string name="nombre_tiendaLogin">Nombre de la tienda</string>
+    <string name="title_activity__inicio_tienda">Inicio</string>
 
 
 </resources>

@@ -63,7 +63,11 @@
         <activity android:name=".Activity_TipoUsuario" />
         <activity
             android:name=".Activity_LoginTienda"
-            android:label="@string/title_activity__login_tienda"></activity>
+            android:label="@string/title_activity__login_tienda" />
+        <activity
+            android:name=".Activity_InicioTienda"
+            android:label="@string/title_activity__inicio_tienda"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
