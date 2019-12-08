@@ -26,6 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import android.widget.TextView;
+import android.widget.Button;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -47,6 +48,7 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
     TextView tv_nummegusta;
     TextView tv_numcomentarios;
     EditText edt_comentario;
+    Button btn_vertienda;
 
     private String webservice_url = "http://webapp-encuentrahorro.herokuapp.com" +
             "./api_recomendaciones?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&id_recomendacion=";
@@ -66,6 +68,7 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
             "/api_comentarios?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&id_recomendacion=";
 
     String nom_tienda_2 = ""; // Variable para almacenar el nombre del comercio (después de la consulta de información)
+    //String id_relacionado_tienda = ""; // Variable para transferir de una interfaz a otra el ID del comercio
 
 
     @Override
@@ -81,6 +84,7 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
         tv_nummegusta = findViewById(R.id.tv_nummegusta);
         tv_numcomentarios = findViewById(R.id.tv_numcomentarios);
         edt_comentario = findViewById(R.id.edt_comentario);
+        btn_vertienda = findViewById(R.id.btn_vertienda);
 
         //Objeto tipo Intent para recuperar el parametro enviado
         Intent intent = getIntent();
@@ -179,6 +183,10 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
                 else {
                     obtenerNombreTienda(Integer.parseInt(id_tienda));
                     tv_nombreusuario.setText(nom_tienda_2);
+                    // Código para habilitar botón y crear enlace a interfaz-catalogo de comercios
+                    btn_vertienda.setEnabled(true);
+                    btn_vertienda.setTextColor(R.color.colorAccent);
+                    //btn_vertienda.setBackgroundColor(R.color.colorAccent);
                 }
 
 //                URL newurl = new URL(images_url+imagen);
@@ -442,10 +450,24 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
 
                 //adapter.add(id_producto + " " + nombre_producto);
                 nom_tienda_2 = nombre_tienda;
+                //id_relacionado_tienda = id_tienda;
 
             }catch (JSONException e){
                 Log.e("Error 133",e.getMessage());
             }
+        }
+    }
+
+
+    public void verTienda(View view) {
+        try {
+            Intent ir_a_lista = new Intent(this, Activity_ProductosTienda.class);
+            //palabra_clave = String.valueOf(et_palabras_clave.getText());
+            ir_a_lista.putExtra("parametro2tienda", nom_tienda_2);
+            startActivity(ir_a_lista);
+        }
+        catch (Exception e) {
+            Log.e("Error 437",e.getMessage());
         }
     }
 

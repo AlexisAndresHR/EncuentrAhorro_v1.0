@@ -45,8 +45,21 @@
                     android:id="@+id/tv_nombreusuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:text="@string/nombre_de_usuario"
                     android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_vertienda"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="false"
+                    android:background="@color/Transparent"
+                    android:enabled="false"
+                    android:onClick="verTienda"
+                    android:text="Ver Tienda"
+                    android:textColor="@color/backgroundColor" />
 
                 <TextView
                     android:id="@+id/tv_fecha"

@@ -33,12 +33,12 @@ public class Adaptador_ProductosTienda extends BaseAdapter {
             TextView precio = (TextView) vista.findViewById(R.id.tv_precio3);
             TextView descripcion = (TextView) vista.findViewById(R.id.tv_descripcion3);
 
-            nombre_producto.setText(info_recomendaciones[i][0]);
+            nombre_producto.setText(info_recomendaciones[i][4]);
             precio.setText(info_recomendaciones[i][1]);
             descripcion.setText(info_recomendaciones[i][2]);
 
 
-            Log.e("NOMBRE_PRODUCTO: ",info_recomendaciones[i][0]);
+            Log.e("NOMBRE_PRODUCTO: ",info_recomendaciones[i][4]);
             Log.e("PRECIO: ",info_recomendaciones[i][1]);
             Log.e("DESCRIPCION: ",info_recomendaciones[i][2]);
 

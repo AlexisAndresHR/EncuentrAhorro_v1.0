@@ -19,6 +19,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activity_DetalleRecomendacion" />
         <activity android:name=".Activity_ResultadoBusqueda" /> <!-- Meta data para realizar una actividad con facebook -->
+        <activity android:name=".Activity_ProductosTienda" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />

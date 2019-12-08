@@ -32,12 +32,15 @@ public class Activity_ProductosTienda extends AppCompatActivity {
 
     private ArrayAdapter id_producto_cons;
     private String url_productosxtienda = "http://webapp-encuentrahorro.herokuapp.com" +
-            "/api_tipos_productos?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&";
+            "/api_tiendas?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&";
     private String id_relacionado;
+
+    private String url_cons_tipoprod = "http://webapp-encuentrahorro.herokuapp.com" +
+            "/api_tipos_productos?user_hash=dc243fdf1a24cbced74db81708b30788&action=get&";
 
     // Variables probando ...
     String info_recomendaciones [][];
-    //String nom_prod = "";
+    String nom_prod2 = ""; // Variable para almacenar el nombre de un tipo de producto
 
 
     @Override
@@ -47,7 +50,7 @@ public class Activity_ProductosTienda extends AppCompatActivity {
         setContentView(R.layout.activity__productos_tienda);
         tv_nombre_tienda = findViewById(R.id.tv_nombre_tienda);// Línea para textview de prueba
 
-        recibirParametros();
+        recibirNombreTienda();
 
         StringBuilder sb = new StringBuilder();
         sb.append(url_consulta);
@@ -59,14 +62,9 @@ public class Activity_ProductosTienda extends AppCompatActivity {
         lv_lista_tienda = findViewById(R.id.lv_lista_tienda);
         //adapter = new ArrayAdapter(this, R.layout.recomendacion_item);
         //lv_lista_tienda.setAdapter(adapter);
-        lv_lista_tienda.setAdapter(new Adaptador_ResultadoBusqueda(this, info_recomendaciones)); // Probando...
-/*
-        StringBuilder sb = new StringBuilder();
-        sb.append(url_consulta);
-        sb.append("id_producto="+id_relacionado);
-        Log.e("URL",sb.toString());
-        webServiceRest(sb.toString());
-*/
+        lv_lista_tienda.setAdapter(new Adaptador_ProductosTienda(this, info_recomendaciones)); // Probando...
+
+
         lv_lista_tienda.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -87,15 +85,15 @@ public class Activity_ProductosTienda extends AppCompatActivity {
     /**
      * Método para recibir los criterios o parámetros de búsqueda, provenientes del Activity_Buscar.
      */
-    private void recibirParametros() {
+    private void recibirNombreTienda() {
         Bundle link_tienda = getIntent().getExtras();
-        String palabra_clave2 = link_tienda.getString("parametro1p");
-        Log.v("  Valor como parámetro", palabra_clave2);
-        tv_nombre_tienda.setText("Comercio '" + palabra_clave2 + "'");
+        String nombre_recibido = link_tienda.getString("parametro2tienda");
+        Log.v("  Nombre de Tienda", nombre_recibido);
+        tv_nombre_tienda.setText("Comercio '" + nombre_recibido + "'");
 
         StringBuilder sb2 = new StringBuilder();
         sb2.append(url_productosxtienda);
-        sb2.append("nombre_tienda="+palabra_clave2);
+        sb2.append("nombre_tienda="+nombre_recibido.replaceAll(" ","%20"));
         Log.e("  URL 1 obtenida: ",sb2.toString());
         consultaIdTienda(sb2.toString());
     }
@@ -141,7 +139,7 @@ public class Activity_ProductosTienda extends AppCompatActivity {
         }catch (JSONException e){
             Log.e("Error 125",e.getMessage());
         }
-        info_recomendaciones = new String[(int)jsonArray.length()][4]; // Inicializa un arreglo dinámico bidimensional para los resultados de la consulta.
+        info_recomendaciones = new String[(int)jsonArray.length()][5]; // Inicializa un arreglo dinámico bidimensional para los resultados de la consulta.
         for(int i=0;i<jsonArray.length();i++){
             try{
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -169,12 +167,15 @@ public class Activity_ProductosTienda extends AppCompatActivity {
                 info_recomendaciones [i][1] = "$"+precio;
                 info_recomendaciones [i][2] = descripcion;
                 info_recomendaciones [i][3] = id_recomendacion;
-/*
-                Log.e("ID_RECOMENDACION: ",info_recomendaciones[i][0]);
-                Log.e("FECHA: ",info_recomendaciones[i][1]);
-                Log.e("PRECIO: ",info_recomendaciones[i][2]);
-                Log.e("DESCRIPCION: ",info_recomendaciones[i][3]);
-*/
+
+                StringBuilder sb_3 = new StringBuilder();
+                sb_3.append(url_cons_tipoprod);
+                sb_3.append("id_producto="+id_producto);
+                Log.e("  URL 03 obtenida: ",sb_3.toString());
+                consultaNombreProducto(sb_3.toString());
+
+                info_recomendaciones [i][4] = nom_prod2;
+
             }catch (JSONException e){
                 Log.e("Error 126",e.getMessage());
             }
@@ -182,6 +183,10 @@ public class Activity_ProductosTienda extends AppCompatActivity {
     }
 
 
+    /**
+     * Método para obtener el id de l comercio, en base a su nombre.
+     * @param requestURL
+     */
     private void consultaIdTienda(String requestURL){
         try{
             URL url = new URL(requestURL);
@@ -218,10 +223,58 @@ public class Activity_ProductosTienda extends AppCompatActivity {
 
                 //adapter.add(id_producto + " " + nombre_producto);
                 id_relacionado = id_tienda;
-                //nom_prod = nombre_producto;
 
             }catch (JSONException e){
                 Log.e("Error 123",e.getMessage());
+            }
+        }
+    }
+
+
+    /**
+     * Método para obtener el nombre de un producto en base a su id (para mostrar en  interfaz)
+     * @param requestURL
+     */
+    private void consultaNombreProducto(String requestURL){
+        try{
+            URL url = new URL(requestURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line = "";
+            String webServiceResult="";
+            while ((line = bufferedReader.readLine()) != null){
+                webServiceResult += line;
+            }
+            bufferedReader.close();
+            parseInformation3(webServiceResult);
+        }catch(Exception e){
+            Log.e("Error 103",e.getMessage());
+        }
+    }
+
+    private void parseInformation3(String jsonResult){
+        JSONArray jsonArray = null;
+        String id_producto;
+        String id_categoria;
+        String nombre_producto;
+        String imagen_producto;
+        try{
+            jsonArray = new JSONArray(jsonResult);
+        }catch (JSONException e){
+            Log.e("Error 104",e.getMessage());
+        }
+        for(int i=0;i<jsonArray.length();i++){
+            try{
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                id_producto = jsonObject.getString("id_producto");
+                id_categoria= jsonObject.getString("id_categoria");
+                nombre_producto = jsonObject.getString("nombre_producto");
+                imagen_producto = jsonObject.getString("imagen_producto");
+
+                nom_prod2 = nombre_producto;
+
+            }catch (JSONException e){
+                Log.e("Error 105",e.getMessage());
             }
         }
     }
