@@ -76,11 +76,12 @@
                 android:id="@+id/tv_precio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
                 android:text="@string/precio"
                 android:textAlignment="textEnd"
                 android:textColor="@android:color/holo_red_dark"
-                android:textSize="24sp"
-                android:gravity="end" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_titulodescripcion"
