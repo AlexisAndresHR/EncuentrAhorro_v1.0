@@ -6,4 +6,9 @@
     <color name="backgroundColor">#FFFFFF</color>
     <color name="cajasColo">#8B0000</color>
     <color name="Transparent">#00ffffff</color>
+    <color name="baige">#00EFF0C3</color>
+    <color name="beige">#FDFED6</color>
+    <color name="gris">#DADADA</color>
+    <color name="verde_pistache">#B3E77E</color>
+    <color name="rojo_claro">#E26868</color>
 </resources>

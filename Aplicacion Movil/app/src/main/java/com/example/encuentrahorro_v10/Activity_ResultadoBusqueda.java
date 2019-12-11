@@ -166,7 +166,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
                 //adapter.add(id_recomendacion + " > " + fecha + "    $" + precio + " \n " + descripcion);
                 if (nombre_usuario != "null") {
                     info_recomendaciones [i][0] = nombre_usuario;
-                    info_recomendaciones [i][1] = fecha;
+                    info_recomendaciones [i][1] = fecha.substring(0,10);
                     info_recomendaciones [i][2] = nom_prod; // Asigna la variable obtenida de la consulta anterior (parseInformation2).
                     info_recomendaciones [i][3] = "$"+precio;
                     info_recomendaciones [i][4] = descripcion;
@@ -176,7 +176,7 @@ public class Activity_ResultadoBusqueda extends AppCompatActivity {
                     obtenerNombreTienda(Integer.parseInt(id_tienda));
                     info_recomendaciones [i][0] = nom_tienda;
                     //info_recomendaciones [i][0] = id_tienda;
-                    info_recomendaciones [i][1] = fecha;
+                    info_recomendaciones [i][1] = fecha.substring(0,10);
                     info_recomendaciones [i][2] = nom_prod; // Asigna la variable obtenida de la consulta anterior (parseInformation2).
                     info_recomendaciones [i][3] = "$"+precio;
                     info_recomendaciones [i][4] = descripcion;

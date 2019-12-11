@@ -21,7 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -38,7 +38,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -65,10 +64,10 @@
                     android:id="@+id/tv_fecha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="end"
                     android:text="@string/fecha"
                     android:textAlignment="textEnd"
-                    android:textSize="16sp"
-                    android:gravity="end" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -109,29 +108,32 @@
                 tools:context="com.example.mapwithmarker.MapsMarkerActivity" />
 
             <LinearLayout
-                android:layout_width="395dp"
-                android:layout_height="54dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_calificacion"
+                <Button
+                    android:id="@+id/btn_confiable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/evaluaciones"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:textColorLink="@android:color/holo_orange_dark"
-                    android:textSize="16sp" />
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="1"
+                    android:background="@color/verde_pistache"
+                    android:text="Confiable"
+                    android:textStyle="bold" />
 
-                <RatingBar
-                    android:id="@+id/ratbar_promedioevaluaciones"
+                <Button
+                    android:id="@+id/btn_falsa"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:numStars="5"
-                    android:scaleX="0.5"
-                    android:scaleY="0.5"
-                    android:transformPivotX="0dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="1"
+                    android:background="@color/rojo_claro"
+                    android:text="Falsa"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -145,15 +147,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/me_gusta"
-                    android:textSize="16sp" />
+                    android:text="Puntos:"
+                    android:textSize="16sp"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/tv_nummegusta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/me_gusta_detalle"
+                    android:text="00"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp" />
 
@@ -162,15 +165,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/comentarios_detalle"
-                    android:textSize="16sp" />
+                    android:text="Puntos:"
+                    android:textSize="16sp"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/tv_numcomentarios"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/comentarios"
+                    android:text="00"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp" />
             </LinearLayout>

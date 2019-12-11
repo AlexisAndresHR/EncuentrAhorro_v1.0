@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_weight="1"
-        android:background="@color/com_facebook_button_border_color_focused"
+        android:background="@color/gris"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -21,7 +21,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/profile_pic"
                 android:layout_width="55dp"
                 android:layout_height="55dp"

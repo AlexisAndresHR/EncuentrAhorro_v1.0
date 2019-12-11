@@ -175,7 +175,7 @@ public class Activity_DetalleRecomendacion extends AppCompatActivity implements 
                 tv_producto.setText(nom_prod_obtenido);
                 tv_precio.setText("$"+precio);
                 tv_descripcion.setText(descripcion);
-                tv_fecha.setText(fecha);
+                tv_fecha.setText(fecha.substring(0,10));
                 tv_nummegusta.setText(rec_confiable); // Modificar posteriormente ...
                 tv_numcomentarios.setText(num_comentarios);
                 if (nombre_usuario != "null")
